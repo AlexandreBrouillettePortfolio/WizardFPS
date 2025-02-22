@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://tocvcp42nct7"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_fireball.gd" id="1_7ns1q"]
+[ext_resource type="Texture2D" uid="uid://dfi2mxuim8imc" path="res://Test_Assets/AbilitySprites/Fireball1.png" id="2_dip72"]
+[ext_resource type="Texture2D" uid="uid://cahor7tudqejp" path="res://Test_Assets/AbilitySprites/Fireball2.png" id="3_57lac"]
+[ext_resource type="Texture2D" uid="uid://bgmw8twi1p6ea" path="res://Test_Assets/AbilitySprites/Fireball3.png" id="4_cin2b"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iitq4"]
+resource_local_to_scene = true
+radius = 0.25
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fn8jq"]
+animations = [{
+"frames": [{
+"duration": 0.06,
+"texture": ExtResource("2_dip72")
+}, {
+"duration": 0.06,
+"texture": ExtResource("3_57lac")
+}, {
+"duration": 0.06,
+"texture": ExtResource("4_cin2b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Area3D" type="Area3D"]
+collision_mask = 14
+script = ExtResource("1_7ns1q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_iitq4")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_fn8jq")
+frame_progress = 0.071383
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.869093, 0.356314, 5.77569e-07, 1)
+omni_range = 20.915
+
+[connection signal="area_entered" from="." to="." method="_fireball_targeted"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

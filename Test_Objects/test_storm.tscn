@@ -1,0 +1,168 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6e1d3p46kvwv"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_storm.gd" id="1_iwgm0"]
+[ext_resource type="Texture2D" uid="uid://bcdgep8tythoa" path="res://Test_Assets/AbilitySprites/Storm_Cloud.png" id="2_ujjmh"]
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/stormarea.gd" id="3_5x31d"]
+[ext_resource type="Texture2D" uid="uid://6dxrg1dls4ud" path="res://Test_Assets/AbilitySprites/Storm_Light_Up.png" id="3_sxeuy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf381"]
+albedo_color = Color(0.0705882, 0, 0.486275, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g8qo2"]
+material = SubResource("StandardMaterial3D_xf381")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_amt8x"]
+height = 0.2
+radius = 10.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbsge"]
+height = 10.5
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dmlfq"]
+height = 10.5
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nc7oq"]
+height = 10.5
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_letn2"]
+height = 10.5
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_j55km"]
+height = 10.5
+radius = 4.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m43ua"]
+height = 10.5
+radius = 4.0
+
+[node name="Area3D" type="Area3D"]
+collision_mask = 6
+script = ExtResource("1_iwgm0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.12138, 0)
+pixel_size = 0.022
+render_priority = -1
+texture = ExtResource("2_ujjmh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_g8qo2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_amt8x")
+
+[node name="check1" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="check1"]
+one_shot = true
+
+[node name="scan1" type="CollisionShape3D" parent="check1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79176, -5.13103, 5.69247)
+shape = SubResource("CylinderShape3D_gbsge")
+
+[node name="LightUp" type="Sprite3D" parent="check1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.7858, -0.138821, 6.15436)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[node name="check2" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="check2"]
+one_shot = true
+
+[node name="scan2" type="CollisionShape3D" parent="check2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22852, -5.14314, 4.23347)
+shape = SubResource("CylinderShape3D_dmlfq")
+
+[node name="LightUp" type="Sprite3D" parent="check2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.47861, -0.126347, 4.42371)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[node name="check3" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="check3"]
+one_shot = true
+
+[node name="scan3" type="CollisionShape3D" parent="check3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94323, -5.15023, 0.494554)
+shape = SubResource("CylinderShape3D_nc7oq")
+
+[node name="LightUp" type="Sprite3D" parent="check3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.54069, -0.139244, 0.434561)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[node name="check4" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="check4"]
+one_shot = true
+
+[node name="scan4" type="CollisionShape3D" parent="check4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3953, -5.14591, -5.64961)
+shape = SubResource("CylinderShape3D_letn2")
+
+[node name="LightUp" type="Sprite3D" parent="check4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.44204, -0.139142, -5.79334)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[node name="check5" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="check5"]
+one_shot = true
+
+[node name="scan5" type="CollisionShape3D" parent="check5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.23508, -5.15396, -2.82766)
+shape = SubResource("CylinderShape3D_j55km")
+
+[node name="LightUp" type="Sprite3D" parent="check5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.29746, -0.139142, -2.89072)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[node name="checkCenter" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("3_5x31d")
+
+[node name="Cooldown" type="Timer" parent="checkCenter"]
+one_shot = true
+
+[node name="scanCenter" type="CollisionShape3D" parent="checkCenter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.15627, 0)
+shape = SubResource("CylinderShape3D_m43ua")
+
+[node name="LightUp" type="Sprite3D" parent="checkCenter"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.139041, -6.07768e-09)
+visible = false
+pixel_size = 0.02
+texture = ExtResource("3_sxeuy")
+
+[connection signal="timeout" from="check1/Cooldown" to="check1" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="check2/Cooldown" to="check2" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="check3/Cooldown" to="check3" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="check4/Cooldown" to="check4" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="check5/Cooldown" to="check5" method="_on_cooldown_timeout"]
+[connection signal="timeout" from="checkCenter/Cooldown" to="checkCenter" method="_on_cooldown_timeout"]

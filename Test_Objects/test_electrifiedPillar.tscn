@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://25qvewka0cnq"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_electrifiedPillar.gd" id="1_h86bg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ba6kj"]
+height = 3.0
+radius = 7.0
+
+[node name="test_electrifiedPillar" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_h86bg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00192106, 0)
+shape = SubResource("CylinderShape3D_ba6kj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_cooldown_finished"]

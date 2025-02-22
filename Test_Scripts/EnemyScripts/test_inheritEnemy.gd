@@ -1,0 +1,1 @@
+class_name test_inheritEnemy extends test_enemy

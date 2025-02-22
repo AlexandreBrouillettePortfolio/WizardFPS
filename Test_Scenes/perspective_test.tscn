@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://iltjupr3y364"]
+
+[ext_resource type="PackedScene" uid="uid://cvort7icrs1ra" path="res://Test_Objects/test_enemy_projectile.tscn" id="1_qnfcf"]
+[ext_resource type="PackedScene" uid="uid://bgjf8dal0cxgd" path="res://Test_Objects/test_enemy_boulder.tscn" id="2_q2adn"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" parent="." instance=ExtResource("1_qnfcf")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -0.08055, 1.59576, -2.28734)
+
+[node name="Area3D2" parent="." instance=ExtResource("2_q2adn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)

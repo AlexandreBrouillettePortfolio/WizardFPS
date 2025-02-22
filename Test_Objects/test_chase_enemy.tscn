@@ -1,0 +1,259 @@
+[gd_scene load_steps=30 format=3 uid="uid://2jx5y5v2krnj"]
+
+[ext_resource type="Texture2D" uid="uid://m6b2g5ilktg1" path="res://Test_Assets/Placeholder Sprites/9rxzY6M.png" id="1_nv5yj"]
+[ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_chase_enemy.gd" id="1_orpvk"]
+[ext_resource type="Texture2D" uid="uid://bi3u4envi5hn6" path="res://Test_Assets/CharacterSprites/Chase/Chase_Body.png" id="2_n06kw"]
+[ext_resource type="Shader" path="res://Test_Assets/Shaders/test_throw_enemy_sprite.gdshader" id="3_3p8lv"]
+[ext_resource type="Texture2D" uid="uid://c6gsjuwghwe8e" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_pu8o8"]
+[ext_resource type="Texture2D" uid="uid://bti31gc200twe" path="res://Test_Assets/CharacterSprites/Chase/Chase_Arms.png" id="3_r35e6"]
+[ext_resource type="Texture2D" uid="uid://bgw3n6m0ewdpk" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_k2qxj"]
+[ext_resource type="Texture2D" uid="uid://dm24grdwei2uf" path="res://Test_Assets/CharacterSprites/Effects/IceExpandedFull.png" id="5_iordc"]
+[ext_resource type="Texture2D" uid="uid://df6pvbribk7s4" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_xqry8"]
+[ext_resource type="Texture2D" uid="uid://bd850k8d2tslf" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_m8hcj"]
+[ext_resource type="Texture2D" uid="uid://dmsi4je4ykypr" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_macnv"]
+[ext_resource type="Texture2D" uid="uid://d2tvuiiqgbyw7" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_lyxpp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8kbem"]
+height = 1.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eceek"]
+height = 1.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1f2h"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_3p8lv")
+shader_parameter/active = false
+shader_parameter/isDamageActive = false
+shader_parameter/base_tex = ExtResource("2_n06kw")
+shader_parameter/over_tex = ExtResource("5_iordc")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r122q"]
+atlas = ExtResource("2_n06kw")
+region = Rect2(0, 0, 160, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfc6s"]
+atlas = ExtResource("2_n06kw")
+region = Rect2(160, 0, 160, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwx6j"]
+atlas = ExtResource("2_n06kw")
+region = Rect2(320, 0, 160, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8a11h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r122q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfc6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwx6j")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 2.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3dg8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_3p8lv")
+shader_parameter/active = false
+shader_parameter/isDamageActive = false
+shader_parameter/base_tex = ExtResource("3_r35e6")
+shader_parameter/over_tex = ExtResource("5_iordc")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ikmx"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(320, 0, 160, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bi43f"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(480, 0, 160, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vawyu"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(0, 0, 160, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xd57"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(0, 0, 160, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wk32"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(160, 0, 160, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vviug"]
+atlas = ExtResource("3_r35e6")
+region = Rect2(0, 0, 160, 220)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8p1s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ikmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bi43f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vawyu")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xd57")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wk32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vviug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vviug")
+}],
+"loop": true,
+"name": &"Shooting",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oh61n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pu8o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_k2qxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xqry8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ov73p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m8hcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_macnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lyxpp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_macnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m8hcj")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ChaseEnemy" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_orpvk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00994068, 0)
+shape = SubResource("CapsuleShape3D_8kbem")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0130136, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_eceek")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Status Display" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.591586, 0)
+visible = false
+text = "Normal"
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="Body" type="AnimatedSprite3D" parent="Sprite"]
+material_overlay = SubResource("ShaderMaterial_q1f2h")
+pixel_size = 0.004
+alpha_cut = 3
+sprite_frames = SubResource("SpriteFrames_8a11h")
+animation = &"Idle"
+
+[node name="Arms" type="AnimatedSprite3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00182939, 0.0553089, 0.00784147)
+material_overlay = SubResource("ShaderMaterial_r3dg8")
+pixel_size = 0.004
+alpha_cut = 3
+sprite_frames = SubResource("SpriteFrames_t8p1s")
+animation = &"Idle"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00646925, -0.260847, -0.00148129)
+visible = false
+flip_h = true
+pixel_size = 0.0015
+texture = ExtResource("1_nv5yj")
+
+[node name="EffectSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300676, -0.495366)
+visible = false
+pixel_size = 0.02
+
+[node name="OnFireSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.167917, -0.503427)
+visible = false
+sprite_frames = SubResource("SpriteFrames_oh61n")
+
+[node name="FireDoTTimer" type="Timer" parent="."]
+
+[node name="SpawningSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.112779, -0.212187)
+visible = false
+sprite_frames = SubResource("SpriteFrames_ov73p")
+
+[node name="isDamaged" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="FireDurationTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="MeltControl" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="frame_changed" from="Sprite/Arms" to="." method="_on_arms_frame_changed"]
+[connection signal="timeout" from="FireDoTTimer" to="." method="_fire_dot_tick"]
+[connection signal="animation_finished" from="SpawningSprite" to="." method="_on_spawning_sprite_animation_finished"]
+[connection signal="frame_changed" from="SpawningSprite" to="." method="_on_spawning_sprite_frame_changed"]
+[connection signal="timeout" from="isDamaged" to="." method="_on_is_damaged_timeout"]
+[connection signal="timeout" from="FireDurationTimer" to="." method="_on_fire_duration_timer_timeout"]
+[connection signal="timeout" from="MeltControl" to="." method="_on_melt_control_timeout"]

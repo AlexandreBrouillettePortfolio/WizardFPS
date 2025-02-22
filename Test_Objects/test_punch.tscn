@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ltc20bo3tdaq"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_punch.gd" id="1_xnl7k"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qr3ni"]
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0anu"]
+transparency = 1
+albedo_color = Color(1, 0.0666667, 1, 0.0431373)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w7wc0"]
+material = SubResource("StandardMaterial3D_t0anu")
+height = 1.0
+
+[node name="Area3D" type="Area3D"]
+collision_mask = 6
+script = ExtResource("1_xnl7k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_qr3ni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w7wc0")
+
+[connection signal="area_entered" from="." to="." method="_projectile_entered"]
+[connection signal="body_entered" from="." to="." method="_punch_entered"]

@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs6pjkjdmj8nt"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_wave.gd" id="1_ce62r"]
+[ext_resource type="Texture2D" uid="uid://pu1pv1jqhuc3" path="res://Test_Assets/AbilitySprites/Ice_Wave.png" id="2_38km7"]
+[ext_resource type="Texture2D" uid="uid://djh3j6fp5j18w" path="res://Test_Assets/AbilitySprites/Ice_Wave_Floor.png" id="2_hgjuk"]
+[ext_resource type="Texture2D" uid="uid://bcvhjpbuiywr" path="res://Test_Assets/AbilitySprites/Ice_Wave_Floor2.png" id="3_o6tpa"]
+[ext_resource type="Texture2D" uid="uid://dju178guc701j" path="res://Test_Assets/AbilitySprites/Ice_Wave_Floor3.png" id="4_sj3mc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbmua"]
+albedo_color = Color(0.00784314, 0.811765, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_wllm3"]
+material = SubResource("StandardMaterial3D_hbmua")
+size = Vector3(9.33, 4, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmjlp"]
+albedo_color = Color(0, 0.811765, 1, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_drypo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hmjlp")
+size = Vector3(18.7, 8, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ly2n"]
+transparency = 1
+albedo_color = Color(0, 0.811765, 1, 0.647059)
+
+[sub_resource type="PrismMesh" id="PrismMesh_sa7m1"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2ly2n")
+size = Vector3(28, 12, 0.1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_rgw2n"]
+points = PackedVector3Array(0, 6, 0.05, 14, -6, 0.05, 0, 6, -0.05, -14, -6, 0.05, 14, -6, -0.05, -14, -6, -0.05)
+
+[node name="Area3D" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.494562)
+collision_mask = 2
+script = ExtResource("1_ce62r")
+
+[node name="GrowTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.50602)
+visible = false
+mesh = SubResource("PrismMesh_wllm3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 3.50173)
+visible = false
+mesh = SubResource("PrismMesh_drypo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 5.52631)
+visible = false
+mesh = SubResource("PrismMesh_sa7m1")
+
+[node name="WaveFloor1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0100625, 0, 1.50831)
+visible = false
+texture = ExtResource("2_hgjuk")
+
+[node name="WaveFloor2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 3.52425)
+visible = false
+texture = ExtResource("3_o6tpa")
+
+[node name="WaveFloor3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.0424602, 0, 5.50095)
+visible = false
+texture = ExtResource("4_sj3mc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 5.52631)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_rgw2n")
+
+[node name="Crystal1" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.363163, 0.383116)
+visible = false
+pixel_size = 0.003
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95098, 0.532817, 2.29646)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55794, 0.518025, 2.79025)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.332279, 0.405513, 5.28989)
+visible = false
+pixel_size = 0.004
+texture = ExtResource("2_38km7")
+
+[node name="Crystal5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42804, 0.523097, 6.08219)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal6" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16088, 0.521297, 6.48785)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal7" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19637, 0.541875, 8.89224)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[node name="Crystal8" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82833, 0.560313, 10.0817)
+visible = false
+pixel_size = 0.004
+alpha_cut = 2
+texture = ExtResource("2_38km7")
+
+[connection signal="body_entered" from="." to="." method="_wave_entered"]
+[connection signal="timeout" from="GrowTimer" to="." method="_growth"]

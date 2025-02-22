@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn8nu12t1u7o"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_axe_enemy.gd" id="1_4hiis"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dx62w"]
+radius = 0.75
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kp4gg"]
+radius = 0.75
+
+[node name="test_axe_enemy" type="CharacterBody3D"]
+script = ExtResource("1_4hiis")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_dx62w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kp4gg")
+
+[node name="Status Display" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.27491, 0)
+text = "Normal"
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+
+[node name="Arms" type="AnimatedSprite3D" parent="Sprite"]
+
+[node name="Body" type="AnimatedSprite3D" parent="Sprite"]
+
+[node name="FireDoTTimer" type="Timer" parent="."]
+
+[node name="isDamaged" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="FireDurationTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="MeltControl" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="FireDoTTimer" to="." method="_fire_dot_tick"]
+[connection signal="timeout" from="isDamaged" to="." method="_on_is_damaged_timeout"]
+[connection signal="timeout" from="FireDurationTimer" to="." method="_on_fire_duration_timer_timeout"]
+[connection signal="timeout" from="MeltControl" to="." method="_on_melt_control_timeout"]

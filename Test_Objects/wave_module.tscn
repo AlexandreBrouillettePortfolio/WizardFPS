@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cljdk2flwyar4"]
+
+[ext_resource type="PackedScene" uid="uid://d0hy5tpv1rqr7" path="res://Test_Assets/Models/waveIcicle.glb" id="1_083xb"]
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/wave_module.gd" id="1_w37tk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6288g"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[node name="wave_module" type="Area3D"]
+script = ExtResource("1_w37tk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6288g")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+target_position = Vector3(0, -5, 0)
+collision_mask = 32
+
+[node name="RayCast3DUp" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+collision_mask = 32
+hit_from_inside = true
+
+[node name="waveIcicle" parent="." instance=ExtResource("1_083xb")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, -0.629322, 0)

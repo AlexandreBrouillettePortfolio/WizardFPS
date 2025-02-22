@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c83wb2o8jl0uh"]
+
+[ext_resource type="Texture2D" uid="uid://c6jwo4qakj3tb" path="res://Test_Assets/AbilitySprites/lightning_test.png" id="1_h5bgt"]
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_lightning.gd" id="2_2raxg"]
+
+[node name="Sprite3D" type="Sprite3D"]
+offset = Vector2(500, 0)
+axis = 0
+texture_filter = 2
+texture = ExtResource("1_h5bgt")
+region_enabled = true
+region_rect = Rect2(0, 0, 1000, 100)
+script = ExtResource("2_2raxg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.975712)
+light_color = Color(0, 0.65098, 1, 1)
+omni_range = 6.433
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.71617)
+light_color = Color(0, 0.65098, 1, 1)
+omni_range = 6.433
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.53169)
+light_color = Color(0, 0.65098, 1, 1)
+omni_range = 6.433

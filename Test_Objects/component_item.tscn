@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btnrj57ch2ir3"]
+
+[ext_resource type="Script" path="res://Test_Scripts/StaticOrComponentScripts/component_item.gd" id="1_muahr"]
+
+[node name="component_item" type="Area3D"]
+script = ExtResource("1_muahr")

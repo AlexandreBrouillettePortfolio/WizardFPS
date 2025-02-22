@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vqvbsi80r6jc"]
+
+[ext_resource type="Script" path="res://Test_Scripts/StaticOrComponentScripts/component_activator.gd" id="1_xf4f3"]
+
+[node name="activator" type="Node3D"]
+script = ExtResource("1_xf4f3")

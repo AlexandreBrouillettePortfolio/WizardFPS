@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bobam4ny5dv14"]
+
+[ext_resource type="Script" path="res://Test_Scripts/StaticOrComponentScripts/component_activatable.gd" id="1_qh0us"]
+
+[node name="component_activatable" type="Node3D"]
+script = ExtResource("1_qh0us")

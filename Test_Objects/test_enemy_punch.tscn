@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3480rvnlxlly"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_enemy_punch.gd" id="1_7me0g"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_cdmj0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2klpt"]
+transparency = 1
+albedo_color = Color(0.867519, 0, 0.125492, 0.0431373)
+
+[sub_resource type="SphereMesh" id="SphereMesh_so3yq"]
+material = SubResource("StandardMaterial3D_2klpt")
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_7me0g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_cdmj0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_so3yq")
+
+[connection signal="body_entered" from="." to="." method="_punch_entered"]

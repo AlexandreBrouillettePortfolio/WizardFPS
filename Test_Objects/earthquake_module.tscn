@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://biklo2wcmbidn"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/earthquake_module.gd" id="1_2uu6j"]
+[ext_resource type="Shader" path="res://Test_Assets/Shaders/test_earthquake.gdshader" id="2_lv4rq"]
+[ext_resource type="PackedScene" uid="uid://bt2oxiv7l8qqd" path="res://Test_Assets/Models/earthquakeRock.glb" id="3_di327"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7fxh1"]
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0s8o"]
+render_priority = 0
+shader = ExtResource("2_lv4rq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qt2wk"]
+size = Vector3(1.5, 0.1, 1.5)
+
+[node name="earthquakeModule" type="Area3D"]
+collision_layer = 9
+collision_mask = 2
+script = ExtResource("1_2uu6j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("PlaneMesh_7fxh1")
+surface_material_override/0 = SubResource("ShaderMaterial_x0s8o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0477947, 0)
+shape = SubResource("BoxShape3D_qt2wk")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+target_position = Vector3(0, -5, 0)
+collision_mask = 32
+collide_with_areas = true
+
+[node name="RayCast3DUp" type="RayCast3D" parent="."]
+target_position = Vector3(0, 2, 0)
+collision_mask = 32
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+
+[node name="earthquakeRock" parent="." instance=ExtResource("3_di327")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.0864404, -0.277876, 0.0660415)
+visible = false

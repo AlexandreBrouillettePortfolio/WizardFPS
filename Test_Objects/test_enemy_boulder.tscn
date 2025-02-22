@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgjf8dal0cxgd"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_enemy_boulder.gd" id="1_us6ui"]
+[ext_resource type="Texture2D" uid="uid://okqx17m8ccst" path="res://Test_Assets/360 Sprites/360 Boulder.png" id="2_gvjel"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7moyt"]
+albedo_color = Color(0.446777, 0.446777, 0.446777, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2wq4p"]
+material = SubResource("StandardMaterial3D_7moyt")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4f3mj"]
+radius = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mdsr"]
+atlas = ExtResource("2_gvjel")
+region = Rect2(0, 0, 384, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttanr"]
+atlas = ExtResource("2_gvjel")
+region = Rect2(384, 0, 384, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8iud"]
+atlas = ExtResource("2_gvjel")
+region = Rect2(0, 288, 384, 288)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b401u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mdsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttanr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8iud")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_us6ui")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_2wq4p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_4f3mj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.008
+sprite_frames = SubResource("SpriteFrames_b401u")
+
+[connection signal="body_entered" from="." to="." method="_boulder_entered"]

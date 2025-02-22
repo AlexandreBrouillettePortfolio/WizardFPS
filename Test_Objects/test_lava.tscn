@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://diobrxnwsqh84"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_lava.gd" id="1_q0svj"]
+[ext_resource type="Texture2D" uid="uid://bkxr8fyu2reit" path="res://Test_Assets/AbilitySprites/Lava_Pool.png" id="2_3k44p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knpdn"]
+albedo_color = Color(1, 0.237934, 0.0498514, 1)
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_e8odw"]
+material = SubResource("StandardMaterial3D_knpdn")
+top_radius = 3.0
+bottom_radius = 3.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jxu5q"]
+height = 0.1
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osuxk"]
+atlas = ExtResource("2_3k44p")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br2wt"]
+atlas = ExtResource("2_3k44p")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kkdp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osuxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br2wt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="Area3D" type="Area3D"]
+collision_mask = 15
+script = ExtResource("1_q0svj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_e8odw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_jxu5q")
+
+[node name="StrikeTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0224833, 0)
+light_color = Color(1, 0.280874, 0.132057, 1)
+light_energy = 2.0
+omni_range = 3.0
+omni_attenuation = 0.25
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0709929, 0)
+pixel_size = 0.02
+sprite_frames = SubResource("SpriteFrames_3kkdp")
+autoplay = "default"
+
+[connection signal="timeout" from="StrikeTimer" to="." method="_on_strike_timer_timeout"]

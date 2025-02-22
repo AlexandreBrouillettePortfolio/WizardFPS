@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4ebv2tqaxedi"]
+
+[ext_resource type="Script" path="res://Test_Scripts/ItemScripts/Spellbook.gd" id="1_lqh7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwb0m"]
+albedo_color = Color(0.678352, 0.000346638, 0.678347, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dqdnp"]
+material = SubResource("StandardMaterial3D_nwb0m")
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lbds5"]
+points = PackedVector3Array(0.375, 0.375, 0.375, 0.375, 0.375, -0.375, -0.375, 0.375, 0.375, 0.375, -0.375, 0.375, 0.375, -0.375, -0.375, -0.375, 0.375, -0.375, -0.375, -0.375, 0.375, -0.375, -0.375, -0.375)
+
+[node name="Spellbook" type="Area3D"]
+script = ExtResource("1_lqh7w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dqdnp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_lbds5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

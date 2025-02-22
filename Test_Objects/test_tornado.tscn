@@ -1,0 +1,117 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnpqbf8mgp67c"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_tornado.gd" id="1_cx40s"]
+[ext_resource type="Texture2D" uid="uid://c2lef0kmpcxm8" path="res://Test_Assets/AbilitySprites/Tornado_alt.png" id="3_qvmnk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wfqj"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 0.760784, 0, 0.4)
+refraction_scale = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wraf2"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_7wfqj")
+top_radius = 1.49
+bottom_radius = 1.49
+height = 5.96
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2akpc"]
+resource_local_to_scene = true
+height = 8.0
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbifh"]
+transparency = 1
+albedo_color = Color(0, 0.760784, 0, 0.521569)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ccxmo"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_vbifh")
+flip_faces = true
+top_radius = 1.49
+bottom_radius = 1.49
+height = 5.96
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a57ew"]
+atlas = ExtResource("3_qvmnk")
+region = Rect2(320, 0, 160, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kdvs"]
+atlas = ExtResource("3_qvmnk")
+region = Rect2(480, 0, 160, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45d50"]
+atlas = ExtResource("3_qvmnk")
+region = Rect2(0, 0, 160, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1bj2"]
+atlas = ExtResource("3_qvmnk")
+region = Rect2(160, 0, 160, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnr0n"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a57ew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kdvs")
+}],
+"loop": true,
+"name": &"OnFire",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45d50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1bj2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Area3D" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0205392, 0)
+collision_layer = 9
+collision_mask = 15
+script = ExtResource("1_cx40s")
+
+[node name="TornadoExterior" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CylinderMesh_wraf2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998448, 0)
+shape = SubResource("CylinderShape3D_2akpc")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="TornadoInterior" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("CylinderMesh_ccxmo")
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.956714, 0)
+pixel_size = 0.025
+sprite_frames = SubResource("SpriteFrames_wnr0n")
+autoplay = "default"
+
+[connection signal="body_entered" from="." to="." method="_tornado_entered"]
+[connection signal="body_exited" from="." to="." method="_tornado_exited"]
+[connection signal="timeout" from="Timer" to="." method="_cooldown_finished"]
+[connection signal="timeout" from="TurnTimer" to="." method="_turning_time"]

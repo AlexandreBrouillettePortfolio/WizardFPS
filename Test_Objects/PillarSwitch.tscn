@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://n434f20df06d"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnvironmentScripts/PillarSwitch.gd" id="1_ms6uj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gkk4j"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t72cy"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gkk4j")
+size = Vector3(0.8, 0.1, 0.8)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i7tol"]
+resource_local_to_scene = true
+points = PackedVector3Array(-0.4, -0.05, -0.4, -0.4, 0.05, -0.4, 0.4, -0.05, -0.4, -0.4, -0.05, 0.4, -0.4, 0.05, 0.4, 0.4, 0.05, -0.4, 0.4, -0.05, 0.4, 0.4, 0.05, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at13f"]
+albedo_color = Color(0.505882, 0.207843, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0yh6g"]
+material = SubResource("StandardMaterial3D_at13f")
+size = Vector3(0.25, 0.25, 0.54)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4g2t7"]
+albedo_color = Color(0.505882, 0.207843, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywiqj"]
+material = SubResource("StandardMaterial3D_4g2t7")
+size = Vector3(0.25, 0.145, 0.21)
+
+[node name="PillarSwitch" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_ms6uj")
+
+[node name="Socle" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_t72cy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_i7tol")
+
+[node name="MurCompose" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.542347, 0.075748, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MurCompose"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, 0.374)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MurCompose"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, -0.371)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MurCompose"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.0525928, 0)
+mesh = SubResource("BoxMesh_ywiqj")
+
+[node name="MurCompose2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.513117, 0.075748, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MurCompose2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, 0.374)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MurCompose2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, -0.371)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MurCompose2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.0525928, 0)
+mesh = SubResource("BoxMesh_ywiqj")
+
+[node name="MurCompose3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00208843, 0.075748, -0.528475)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MurCompose3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, 0.374)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MurCompose3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, -0.371)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MurCompose3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.0525928, 0)
+mesh = SubResource("BoxMesh_ywiqj")
+
+[node name="MurCompose4" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00208843, 0.075748, 0.50181)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MurCompose4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, 0.374)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MurCompose4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0, -0.371)
+mesh = SubResource("BoxMesh_0yh6g")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MurCompose4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013, 0.0525928, 0)
+mesh = SubResource("BoxMesh_ywiqj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

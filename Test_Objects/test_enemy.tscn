@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://e0cx05wd4r2m"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_enemy.gd" id="1_4lkh5"]
+[ext_resource type="Texture2D" uid="uid://788u4fcn8btf" path="res://Test_Assets/Placeholder Sprites/MR BEAAAST.jpg" id="2_58x4o"]
+[ext_resource type="Texture2D" uid="uid://c6gsjuwghwe8e" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_yjs1n"]
+[ext_resource type="Texture2D" uid="uid://bgw3n6m0ewdpk" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_ijf28"]
+[ext_resource type="Texture2D" uid="uid://df6pvbribk7s4" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_ceehx"]
+[ext_resource type="Texture2D" uid="uid://bd850k8d2tslf" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_pwhhi"]
+[ext_resource type="Texture2D" uid="uid://dmsi4je4ykypr" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_tm244"]
+[ext_resource type="Texture2D" uid="uid://d2tvuiiqgbyw7" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_pxl4n"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sj430"]
+height = 1.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yupos"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_urp2n"]
+material = SubResource("StandardMaterial3D_yupos")
+top_radius = 0.0
+height = 1.01
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4kur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yjs1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ijf28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ceehx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_764lh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_pwhhi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tm244")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pxl4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_tm244")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pwhhi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_4lkh5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684343, 0)
+shape = SubResource("CylinderShape3D_sj430")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683588, 0)
+visible = false
+mesh = SubResource("CylinderMesh_urp2n")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Status Display" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.4585, 0)
+visible = false
+text = "Normal"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.606067, 0)
+visible = false
+flip_h = true
+pixel_size = 0.001
+texture = ExtResource("2_58x4o")
+
+[node name="EffectSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605466, -0.495366)
+pixel_size = 0.02
+
+[node name="OnFireSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807312, -0.503427)
+visible = false
+pixel_size = 0.015
+sprite_frames = SubResource("SpriteFrames_w4kur")
+
+[node name="FireDoTTimer" type="Timer" parent="."]
+
+[node name="SpawningSprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71079, -0.212187)
+visible = false
+sprite_frames = SubResource("SpriteFrames_764lh")
+
+[node name="isDamaged" type="Timer" parent="."]
+
+[node name="FireDurationTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="MeltControl" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="FireDoTTimer" to="." method="_fire_dot_tick"]
+[connection signal="animation_finished" from="SpawningSprite" to="." method="_on_spawning_sprite_animation_finished"]
+[connection signal="frame_changed" from="SpawningSprite" to="." method="_on_spawning_sprite_frame_changed"]
+[connection signal="timeout" from="isDamaged" to="." method="_on_is_damaged_timeout"]
+[connection signal="timeout" from="FireDurationTimer" to="." method="_on_fire_duration_timer_timeout"]
+[connection signal="timeout" from="MeltControl" to="." method="_on_melt_control_timeout"]

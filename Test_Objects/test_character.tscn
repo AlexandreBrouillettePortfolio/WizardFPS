@@ -1,0 +1,296 @@
+[gd_scene load_steps=31 format=3 uid="uid://bw44dqb2fwyp3"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_character.gd" id="1_ni5ws"]
+[ext_resource type="Texture2D" uid="uid://dwxvk1l01fb8" path="res://Test_Assets/AbilitySprites/Dash_effect.png" id="2_dqt1t"]
+[ext_resource type="Texture2D" uid="uid://jvlguag5wcg4" path="res://Test_Assets/AbilitySprites/Flight_Wind1.png" id="2_hrj05"]
+[ext_resource type="Texture2D" uid="uid://klaplefgxs0e" path="res://Test_Assets/AbilitySprites/Crosshair.png" id="2_mne8d"]
+[ext_resource type="Texture2D" uid="uid://bchybifbva6af" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle1.png" id="3_2v1fc"]
+[ext_resource type="Texture2D" uid="uid://b505otlwq6c7o" path="res://Test_Assets/PlayerSprites/Hand_Main_Left.png" id="3_b85mr"]
+[ext_resource type="Texture2D" uid="uid://pivlhqdogk3c" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle2.png" id="4_fn25e"]
+[ext_resource type="Texture2D" uid="uid://c1585778q6qpc" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle1.png" id="5_dvxm3"]
+[ext_resource type="Texture2D" uid="uid://cfqqq4pxdxcx1" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle2.png" id="6_o126g"]
+[ext_resource type="Texture2D" uid="uid://c5jrkwluffbd1" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle1.png" id="7_5chwi"]
+[ext_resource type="Texture2D" uid="uid://ccn8c3qmwue25" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle2.png" id="8_2w6yr"]
+[ext_resource type="Texture2D" uid="uid://c2beme7s1devw" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle1.png" id="9_os3hj"]
+[ext_resource type="Texture2D" uid="uid://fk8nkx28awb7" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle2.png" id="10_6crai"]
+[ext_resource type="Texture2D" uid="uid://buuja2j1osmkm" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle1.png" id="11_4pqkd"]
+[ext_resource type="Texture2D" uid="uid://bkxlcbxtkcovv" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle2.png" id="12_2tsas"]
+[ext_resource type="Texture2D" uid="uid://86js4hvwhtdc" path="res://Test_Assets/PlayerSprites/Hand_Main.png" id="14_2v6ln"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u08lq"]
+radius = 0.33
+height = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_teedx"]
+margin = 0.0
+radius = 0.33
+height = 1.5
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke4ut"]
+atlas = ExtResource("2_dqt1t")
+region = Rect2(0, 0, 800, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urday"]
+atlas = ExtResource("2_dqt1t")
+region = Rect2(0, 200, 800, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd5ba"]
+atlas = ExtResource("2_dqt1t")
+region = Rect2(0, 400, 800, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ibyf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke4ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urday")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd5ba")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs822"]
+transparency = 1
+albedo_color = Color(0.415686, 0.745098, 0.188235, 1)
+albedo_texture = ExtResource("2_hrj05")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dxc02"]
+material = SubResource("StandardMaterial3D_fs822")
+flip_faces = true
+top_radius = 0.8
+bottom_radius = 0.3
+height = 0.5
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vojx"]
+font_size = 22
+font_color = Color(0.898276, 1.10701e-06, 9.62615e-07, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6hy1"]
+font_size = 22
+font_color = Color(0.0588235, 0.0588235, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qm0vb"]
+font_size = 22
+font_color = Color(0.980392, 0.415686, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5eqoc"]
+font_size = 22
+font_color = Color(0.223529, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbyus"]
+font_size = 22
+font_color = Color(0.180392, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lxji"]
+font_size = 22
+font_color = Color(1, 0.105882, 0, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_ni5ws")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_u08lq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_teedx")
+
+[node name="DashEffect" type="Node3D" parent="."]
+visible = false
+
+[node name="TopRight" type="AnimatedSprite3D" parent="DashEffect"]
+transform = Transform3D(0.173648, -0.696364, -0.696364, 0, 0.707107, -0.707107, 0.984808, 0.122788, 0.122788, 0.802, 0.665, -1)
+pixel_size = 0.004
+sprite_frames = SubResource("SpriteFrames_7ibyf")
+
+[node name="TopLeft" type="AnimatedSprite3D" parent="DashEffect"]
+transform = Transform3D(-0.173648, 0.696364, -0.696364, 0, 0.707107, 0.707107, 0.984808, 0.122788, -0.122788, -0.802, 0.665, -1)
+pixel_size = 0.004
+sprite_frames = SubResource("SpriteFrames_7ibyf")
+
+[node name="BottomRight" type="AnimatedSprite3D" parent="DashEffect"]
+transform = Transform3D(0.173648, 0.696364, -0.696364, 0, 0.707107, 0.707107, 0.984808, -0.122788, 0.122788, 0.802, -0.313, -1)
+pixel_size = 0.004
+sprite_frames = SubResource("SpriteFrames_7ibyf")
+
+[node name="BottomLeft" type="AnimatedSprite3D" parent="DashEffect"]
+transform = Transform3D(-0.173648, -0.696364, -0.696364, 0, 0.707107, -0.707107, 0.984808, -0.122788, -0.122788, -0.802, -0.313, -1)
+pixel_size = 0.004
+sprite_frames = SubResource("SpriteFrames_7ibyf")
+
+[node name="MvmtEffect" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0974049, 0)
+visible = false
+mesh = SubResource("CylinderMesh_dxc02")
+
+[node name="MvmtEffectTimer" type="Timer" parent="."]
+wait_time = 0.15
+
+[node name="PrimaryCastTime" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="SecondaryCastTime" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="HandReset" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="LeftHandReset" type="Timer" parent="."]
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="Neck" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417723, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Neck"]
+fov = 90.0
+
+[node name="LeftHand" type="Sprite2D" parent="Neck/Camera3D"]
+position = Vector2(311, 500)
+texture = ExtResource("3_b85mr")
+
+[node name="RightHand" type="Sprite2D" parent="Neck/Camera3D"]
+position = Vector2(844, 500)
+texture = ExtResource("14_2v6ln")
+
+[node name="Sprite2D" type="Sprite2D" parent="Neck/Camera3D"]
+position = Vector2(576, 320)
+texture = ExtResource("2_mne8d")
+
+[node name="HealthLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 556.0
+offset_top = 325.0
+offset_right = 611.0
+offset_bottom = 357.0
+text = "100"
+label_settings = SubResource("LabelSettings_3vojx")
+
+[node name="LightningManaLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 19.0
+offset_top = 520.0
+offset_right = 59.0
+offset_bottom = 551.0
+text = "100"
+label_settings = SubResource("LabelSettings_j6hy1")
+horizontal_alignment = 1
+
+[node name="LightningManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
+offset_left = 1.0
+offset_top = 547.0
+offset_right = 75.0
+offset_bottom = 647.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("3_2v1fc")
+texture_progress = ExtResource("4_fn25e")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="EarthManaLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 96.0
+offset_top = 519.0
+offset_right = 136.0
+offset_bottom = 550.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_qm0vb")
+horizontal_alignment = 1
+
+[node name="EarthManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
+offset_left = 79.0
+offset_top = 547.0
+offset_right = 153.0
+offset_bottom = 647.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("5_dvxm3")
+texture_progress = ExtResource("6_o126g")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="WindManaLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 175.0
+offset_top = 520.0
+offset_right = 215.0
+offset_bottom = 551.0
+text = "100
+"
+label_settings = SubResource("LabelSettings_5eqoc")
+horizontal_alignment = 1
+
+[node name="WindManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
+offset_left = 157.0
+offset_top = 547.0
+offset_right = 231.0
+offset_bottom = 647.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("7_5chwi")
+texture_progress = ExtResource("8_2w6yr")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="IceManaLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 253.0
+offset_top = 520.0
+offset_right = 293.0
+offset_bottom = 551.0
+text = "100"
+label_settings = SubResource("LabelSettings_lbyus")
+horizontal_alignment = 1
+
+[node name="IceManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
+offset_left = 235.0
+offset_top = 547.0
+offset_right = 309.0
+offset_bottom = 647.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("9_os3hj")
+texture_progress = ExtResource("10_6crai")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="FireManaLabel" type="Label" parent="Neck/Camera3D"]
+offset_left = 331.0
+offset_top = 520.0
+offset_right = 371.0
+offset_bottom = 551.0
+text = "100"
+label_settings = SubResource("LabelSettings_1lxji")
+horizontal_alignment = 1
+
+[node name="FireManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
+offset_left = 313.0
+offset_top = 547.0
+offset_right = 387.0
+offset_bottom = 647.0
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("11_4pqkd")
+texture_progress = ExtResource("12_2tsas")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D"]
+target_position = Vector3(0, 0, -50)
+collision_mask = 238
+hit_back_faces = false
+collide_with_areas = true
+debug_shape_custom_color = Color(0.884365, 0, 0.0101643, 1)
+debug_shape_thickness = 1
+
+[connection signal="timeout" from="MvmtEffectTimer" to="." method="_mvmt_effect_rotate"]
+[connection signal="timeout" from="PrimaryCastTime" to="." method="_primary_fire"]
+[connection signal="timeout" from="SecondaryCastTime" to="." method="_secondary_fire"]
+[connection signal="timeout" from="HandReset" to="." method="_reset_hand"]
+[connection signal="timeout" from="LeftHandReset" to="." method="_reset_left_hand"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://co3dh0paggvcd"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_earthwall.gd" id="1_ymx5p"]
+[ext_resource type="Texture2D" uid="uid://dp1m747yf7gj2" path="res://Test_Assets/Textures/PillarSprite.png" id="2_rj37m"]
+[ext_resource type="Texture2D" uid="uid://d1sf5omnv13rc" path="res://Test_Assets/Textures/PillarSpriteNormal.png" id="3_eba5q"]
+[ext_resource type="Texture2D" uid="uid://c7di55mm57fmy" path="res://Test_Assets/Textures/PillarSpriteHeight.png" id="3_jaj7x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51a2k"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_rj37m")
+normal_enabled = true
+normal_texture = ExtResource("3_eba5q")
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("3_jaj7x")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_37buu"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_51a2k")
+size = Vector3(0.75, 3, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edwmh"]
+albedo_color = Color(0.815686, 0.47451, 0.317647, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pcqvo"]
+material = SubResource("StandardMaterial3D_edwmh")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0car8"]
+albedo_color = Color(0.231373, 0.12549, 0.109804, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cn8sa"]
+material = SubResource("StandardMaterial3D_0car8")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgynb"]
+resource_local_to_scene = true
+size = Vector3(0.75, 3, 0.75)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_ymx5p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.819033, 0)
+mesh = SubResource("BoxMesh_37buu")
+
+[node name="TopPane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3209, 0)
+mesh = SubResource("PlaneMesh_pcqvo")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="BottomPane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.683682, 0)
+mesh = SubResource("PlaneMesh_cn8sa")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.822652, 0)
+shape = SubResource("BoxShape3D_xgynb")
+
+[node name="ElectricTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04245, -0.416568)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04245, 0.400855)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417753, 1.04245, -0.0232173)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404854, 1.04245, 0.0291501)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56489, -0.412746)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.56489, 0.42403)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481101, 1.56489, 0.00586316)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422806, 1.56489, -0.0234)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.422806, 2.05767, -0.00163338)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106901, 2.05767, -0.418613)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412198, 2.05767, -0.00460187)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00106901, 2.05767, 0.417378)
+light_color = Color(0, 1, 1, 1)
+light_energy = 0.5
+omni_range = 0.3
+
+[node name="PauseDelay" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="timeout" from="ElectricTimer" to="." method="_on_eletric_timer_timeout"]
+[connection signal="timeout" from="PauseDelay" to="." method="_on_pause_delay_timeout"]

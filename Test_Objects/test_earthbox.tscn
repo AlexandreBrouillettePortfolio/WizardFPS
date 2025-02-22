@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://do5owdqcraq7e"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_earthbox.gd" id="1_vew70"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ve8d6"]
+albedo_color = Color(0.6, 0.262745, 0.0784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5rr83"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ve8d6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2623"]
+resource_local_to_scene = true
+
+[node name="Area3D" type="Area3D"]
+collision_mask = 6
+script = ExtResource("1_vew70")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5rr83")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_o2623")
+
+[connection signal="body_entered" from="." to="." method="_earthbox_entered"]

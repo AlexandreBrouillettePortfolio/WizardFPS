@@ -1,0 +1,114 @@
+[gd_scene load_steps=19 format=3 uid="uid://2u6voq1o5v33"]
+
+[ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_earthquake.gd" id="1_vwvlb"]
+[ext_resource type="Texture2D" uid="uid://do0u7fqfj06r3" path="res://Test_Assets/AbilitySprites/Earthquake1.png" id="2_h35r7"]
+[ext_resource type="Shader" path="res://Test_Assets/Shaders/test_earthquake.gdshader" id="2_yr0nk"]
+[ext_resource type="Texture2D" uid="uid://ds6knfw2fc3fo" path="res://Test_Assets/AbilitySprites/Earthquake2.png" id="3_pwd5t"]
+[ext_resource type="Texture2D" uid="uid://t5snh3i6f4j4" path="res://Test_Assets/AbilitySprites/Earthquake3.png" id="4_svum2"]
+[ext_resource type="Texture2D" uid="uid://bl13hxhwdx1md" path="res://Test_Assets/AbilitySprites/Earthquake4.png" id="5_70f36"]
+[ext_resource type="Texture2D" uid="uid://btr7vuvhd8j02" path="res://Test_Assets/AbilitySprites/Earthquake5.png" id="6_o2grl"]
+[ext_resource type="Texture2D" uid="uid://dsogjv3ejs6dl" path="res://Test_Assets/AbilitySprites/Earthquake6.png" id="7_kws33"]
+[ext_resource type="Texture2D" uid="uid://bprh5v2los8sf" path="res://Test_Assets/AbilitySprites/Firequake2.png" id="8_etboc"]
+[ext_resource type="Texture2D" uid="uid://ctt4vm8lpcl40" path="res://Test_Assets/AbilitySprites/Firequake3.png" id="9_ethmc"]
+[ext_resource type="Texture2D" uid="uid://bd8oqp5vmkl8k" path="res://Test_Assets/AbilitySprites/Firequake4.png" id="10_kyo6j"]
+[ext_resource type="Texture2D" uid="uid://bu3tu5jqxcnbd" path="res://Test_Assets/AbilitySprites/Firequake5.png" id="11_1phu2"]
+[ext_resource type="Texture2D" uid="uid://b61rv4blq0o1i" path="res://Test_Assets/AbilitySprites/Firequake6.png" id="12_yqtg0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8t4ih"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.435294, 0.160784, 0, 0.87451)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5cvg0"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_8t4ih")
+top_radius = 10.0
+bottom_radius = 10.0
+height = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sx8jp"]
+render_priority = 0
+shader = ExtResource("2_yr0nk")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_in04d"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h35r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pwd5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_svum2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_70f36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o2grl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kws33")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3valy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h35r7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_etboc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ethmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_kyo6j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_1phu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yqtg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Earthquake" type="Area3D"]
+collision_layer = 9
+collision_mask = 7
+script = ExtResource("1_vwvlb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("CylinderMesh_5cvg0")
+surface_material_override/0 = SubResource("ShaderMaterial_sx8jp")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="NormalAnimation" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.001, -0.027)
+visible = false
+pixel_size = 0.02
+sprite_frames = SubResource("SpriteFrames_in04d")
+frame_progress = 0.406348
+
+[node name="FireAnimation" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.001, 0)
+visible = false
+pixel_size = 0.02
+sprite_frames = SubResource("SpriteFrames_3valy")
+frame_progress = 0.0996002
+
+[connection signal="area_entered" from="." to="." method="_earthquake_targeted"]
+[connection signal="timeout" from="Timer" to="." method="_cooldown_finished"]
