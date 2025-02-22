@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4exhwpky4f46"]
+
+[ext_resource type="Script" path="res://Test_Scripts/StaticOrComponentScripts/MovementScript.gd" id="1_vues3"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_vues3")

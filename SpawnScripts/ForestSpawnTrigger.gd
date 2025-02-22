@@ -1,0 +1,22 @@
+extends Area3D
+
+func _on_body_entered(body: Node3D) -> void:
+	($/root/Level/ForestPursuit1 as test_enemy).spawn()
+	($/root/Level/ForestPursuit2 as test_enemy).spawn()
+	($/root/Level/ForestPursuit3 as test_enemy).spawn()
+	($/root/Level/ForestPursuit4 as test_enemy).spawn()
+	($/root/Level/ForestPursuit5 as test_enemy).spawn()
+	($/root/Level/ForestPursuit6 as test_enemy).spawn()
+	($/root/Level/ForestPursuit7 as test_enemy).spawn()
+	($/root/Level/ForestPursuit8 as test_enemy).spawn()
+	($/root/Level/ForestPursuit9 as test_enemy).spawn()
+	($/root/Level/ForestShoot1 as test_enemy).spawn()
+	($/root/Level/ForestShoot2 as test_enemy).spawn()
+	($/root/Level/ForestThrow1 as test_enemy).spawn()
+	($/root/Level/ForestThrow2 as test_enemy).spawn()
+	($/root/Level/ForestThrow3 as test_enemy).spawn()
+	($/root/Level/ForestChase1 as test_enemy).spawn()
+	($/root/Level/ForestChase2 as test_enemy).spawn()
+	($/root/Level/ForestChase3 as test_enemy).spawn()
+	($/root/Level/ForestChase4 as test_enemy).spawn()
+	queue_free()
