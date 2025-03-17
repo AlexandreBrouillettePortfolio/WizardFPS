@@ -1,20 +1,20 @@
 [gd_scene load_steps=63 format=3 uid="uid://bay1ray5ux2vw"]
 
 [ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_throw_enemy.gd" id="1_37uob"]
-[ext_resource type="Texture2D" uid="uid://36w1e8uk5tjm" path="res://Test_Assets/Placeholder Sprites/Damn push.jpg" id="2_5wyqp"]
-[ext_resource type="Texture2D" uid="uid://t35bwhxyv7ss" path="res://Test_Assets/CharacterSprites/ThrowHeadSheet.png" id="2_cjkpc"]
-[ext_resource type="Texture2D" uid="uid://d02efqrolbc4y" path="res://Test_Assets/CharacterSprites/ThrowBodySheet.png" id="2_wbeav"]
-[ext_resource type="Texture2D" uid="uid://c6gsjuwghwe8e" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_3jlbp"]
-[ext_resource type="Texture2D" uid="uid://dm24grdwei2uf" path="res://Test_Assets/CharacterSprites/Effects/IceExpandedFull.png" id="4_jjqpb"]
-[ext_resource type="Texture2D" uid="uid://bgw3n6m0ewdpk" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_kq07q"]
-[ext_resource type="Texture2D" uid="uid://b316h4r7d0abv" path="res://Test_Assets/CharacterSprites/ThrowArmSheet.png" id="4_p7q7w"]
-[ext_resource type="Texture2D" uid="uid://df6pvbribk7s4" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_hwry6"]
-[ext_resource type="Texture2D" uid="uid://chud3np0rsjns" path="res://Test_Assets/CharacterSprites/ThrowBodyEffectSheet.png" id="5_ly584"]
-[ext_resource type="Texture2D" uid="uid://bd850k8d2tslf" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_0tj23"]
-[ext_resource type="Texture2D" uid="uid://d4i2pkf37mmf7" path="res://Test_Assets/CharacterSprites/ThrowArmEffectSheet.png" id="6_7k0gl"]
+[ext_resource type="Texture2D" uid="uid://deg7ccieqfiji" path="res://Test_Assets/Placeholder Sprites/Damn push.jpg" id="2_5wyqp"]
+[ext_resource type="Texture2D" uid="uid://dqoek48trktri" path="res://Test_Assets/CharacterSprites/ThrowHeadSheet.png" id="2_cjkpc"]
+[ext_resource type="Texture2D" uid="uid://bvhkx0fw71qud" path="res://Test_Assets/CharacterSprites/ThrowBodySheet.png" id="2_wbeav"]
+[ext_resource type="Texture2D" uid="uid://2qsp35wegsn5" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_3jlbp"]
+[ext_resource type="Texture2D" uid="uid://xvvbb812wvjx" path="res://Test_Assets/CharacterSprites/Effects/IceExpandedFull.png" id="4_jjqpb"]
+[ext_resource type="Texture2D" uid="uid://cqglsa8te2s2i" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_kq07q"]
+[ext_resource type="Texture2D" uid="uid://u4eifg6kv4vf" path="res://Test_Assets/CharacterSprites/ThrowArmSheet.png" id="4_p7q7w"]
+[ext_resource type="Texture2D" uid="uid://3ul5tjyjxlbt" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_hwry6"]
+[ext_resource type="Texture2D" uid="uid://b2mhpx7afqkom" path="res://Test_Assets/CharacterSprites/ThrowBodyEffectSheet.png" id="5_ly584"]
+[ext_resource type="Texture2D" uid="uid://r03jwsbkukod" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_0tj23"]
+[ext_resource type="Texture2D" uid="uid://elara3re4m0t" path="res://Test_Assets/CharacterSprites/ThrowArmEffectSheet.png" id="6_7k0gl"]
 [ext_resource type="Shader" path="res://Test_Assets/Shaders/test_throw_enemy_sprite.gdshader" id="6_hkqq7"]
-[ext_resource type="Texture2D" uid="uid://dmsi4je4ykypr" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_0m6ss"]
-[ext_resource type="Texture2D" uid="uid://d2tvuiiqgbyw7" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_r1pad"]
+[ext_resource type="Texture2D" uid="uid://cfl6i8qqn1ycv" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_0m6ss"]
+[ext_resource type="Texture2D" uid="uid://yjeomdjnt0ci" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_r1pad"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m2qct"]
 radius = 1.0
@@ -433,6 +433,7 @@ pixel_size = 0.003
 alpha_cut = 2
 sprite_frames = SubResource("SpriteFrames_m83ne")
 animation = &"Idle"
+frame_progress = 0.59254
 
 [node name="Arms" type="AnimatedSprite3D" parent="Sprite"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.576, -0.0916955)

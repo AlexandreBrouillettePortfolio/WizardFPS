@@ -2,10 +2,11 @@ class_name wave_module extends Area3D
 
 var ttl:float = 0.4
 @export var size:float = 1.5
-var modules:PackedScene
+var growthRate:float
 
 func _ready() -> void:
 	($waveIcicle as Node3D).rotation.y += randf_range(-0.523599, 0.523599)
+	growthRate = randf_range(1,3)
 
 func initial_alignment() -> void:
 	await testUpperBoundary()
@@ -20,7 +21,6 @@ func initial_alignment() -> void:
 		#print("Death to the unworthy")
 		queue_free()
 	elif ($RayCast3D as RayCast3D).get_collision_mask_value(6):
-		modules = load("res://wave_module.tscn")
 		#print(position)
 		global_transform = align_with_y(global_transform, ($RayCast3D as RayCast3D).get_collision_normal())
 		($RayCast3D as RayCast3D).force_raycast_update()
@@ -29,7 +29,7 @@ func initial_alignment() -> void:
 		#spawnChildren()
 
 func _physics_process(delta: float) -> void:
-	($waveIcicle as Node3D).position.y += delta*3
+	($waveIcicle as Node3D).position.y += delta*growthRate
 	ttl -= delta
 	if (ttl <= 0):
 		queue_free()

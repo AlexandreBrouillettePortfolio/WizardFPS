@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	if growthHeight >= height:
 		growthHeight = height
 		position.y = baseY + growthHeight
-		if distanceTraveled + 1 < 40:
+		if distanceTraveled + 1 < 20:
 			var nextSpike:test_spike_wave = spike.instantiate()
 			var nextPosition:Vector3 = Vector3(self.position.x - 1*sin(get_rotation().y), self.position.y, 
 											self.position.z - 1*cos(get_rotation().y))

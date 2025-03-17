@@ -7,6 +7,7 @@
 size = Vector3(1.5, 0.1, 1.5)
 
 [node name="wave_module" type="Area3D"]
+collision_mask = 2
 script = ExtResource("1_w37tk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

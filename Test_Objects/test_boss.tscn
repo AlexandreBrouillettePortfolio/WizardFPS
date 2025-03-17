@@ -1,26 +1,216 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwgasniv4bw8e"]
+[gd_scene load_steps=41 format=3 uid="uid://bwgasniv4bw8e"]
 
 [ext_resource type="Script" path="res://Test_Scripts/EnemyScripts/test_boss.gd" id="1_36oft"]
-[ext_resource type="Texture2D" uid="uid://dpphl1pc8l34y" path="res://Test_Assets/Placeholder Sprites/youarealreadydead.jpg" id="1_uaaxy"]
-[ext_resource type="Texture2D" uid="uid://c6gsjuwghwe8e" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_05md0"]
-[ext_resource type="Texture2D" uid="uid://bgw3n6m0ewdpk" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_iigej"]
-[ext_resource type="Texture2D" uid="uid://df6pvbribk7s4" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_vkita"]
-[ext_resource type="Texture2D" uid="uid://bd850k8d2tslf" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_rv3jo"]
-[ext_resource type="Texture2D" uid="uid://dmsi4je4ykypr" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_11iy2"]
-[ext_resource type="Texture2D" uid="uid://d2tvuiiqgbyw7" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_6ayu8"]
+[ext_resource type="Texture2D" uid="uid://cah6dsbaw1y3y" path="res://Test_Assets/Placeholder Sprites/youarealreadydead.jpg" id="1_uaaxy"]
+[ext_resource type="Texture2D" uid="uid://2qsp35wegsn5" path="res://Test_Assets/AbilitySprites/EnemyFlame.png" id="3_05md0"]
+[ext_resource type="Texture2D" uid="uid://dwy1isisqg3ms" path="res://Test_Assets/CharacterSprites/Test_Boss/Boss_Head.png" id="3_vppmd"]
+[ext_resource type="Texture2D" uid="uid://cn8w7qn4bvwov" path="res://Test_Assets/CharacterSprites/Test_Boss/Boss_Body.png" id="4_6v0to"]
+[ext_resource type="Texture2D" uid="uid://cqglsa8te2s2i" path="res://Test_Assets/AbilitySprites/EnemyFlame2.png" id="4_iigej"]
+[ext_resource type="Texture2D" uid="uid://cc6i38cgcy660" path="res://Test_Assets/CharacterSprites/Test_Boss/Boss_Arms.png" id="5_h68c3"]
+[ext_resource type="Shader" path="res://Test_Assets/Shaders/test_throw_enemy_sprite.gdshader" id="5_j5pm7"]
+[ext_resource type="Texture2D" uid="uid://3ul5tjyjxlbt" path="res://Test_Assets/AbilitySprites/EnemyFlame3.png" id="5_vkita"]
+[ext_resource type="Texture2D" uid="uid://r03jwsbkukod" path="res://Test_Assets/CharacterSprites/SpawnEffect1.png" id="6_rv3jo"]
+[ext_resource type="Texture2D" uid="uid://cfl6i8qqn1ycv" path="res://Test_Assets/CharacterSprites/SpawnEffect2.png" id="7_11iy2"]
+[ext_resource type="Texture2D" uid="uid://yjeomdjnt0ci" path="res://Test_Assets/CharacterSprites/SpawnEffect3.png" id="8_6ayu8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1f0y8"]
-height = 3.0
+height = 4.0
 radius = 1.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fm17e"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8m282"]
+height = 4.0
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_o1r5w"]
-material = SubResource("StandardMaterial3D_fm17e")
-top_radius = 0.0
-height = 1.01
+[sub_resource type="SpriteFrames" id="SpriteFrames_uwk8l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33s67"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(0, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jljmc"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(124, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w47ha"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(248, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rboxx"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(372, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k2bo"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(496, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5btf4"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(620, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u61r"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(744, 0, 124, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eunyi"]
+atlas = ExtResource("3_vppmd")
+region = Rect2(868, 0, 124, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i72cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33s67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jljmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w47ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rboxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k2bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5btf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u61r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eunyi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uradb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_j5pm7")
+shader_parameter/active = null
+shader_parameter/isDamageActive = null
+shader_parameter/base_tex = ExtResource("4_6v0to")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqp2e"]
+atlas = ExtResource("4_6v0to")
+region = Rect2(0, 0, 188, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krpkg"]
+atlas = ExtResource("4_6v0to")
+region = Rect2(0, 0, 188, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyaad"]
+atlas = ExtResource("4_6v0to")
+region = Rect2(188, 0, 188, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a7hs"]
+atlas = ExtResource("4_6v0to")
+region = Rect2(376, 0, 188, 336)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vkie"]
+atlas = ExtResource("4_6v0to")
+region = Rect2(564, 0, 188, 336)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brtsk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqp2e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krpkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyaad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a7hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vkie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krpkg")
+}],
+"loop": true,
+"name": &"Teleporting",
+"speed": 2.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7otr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_j5pm7")
+shader_parameter/active = null
+shader_parameter/isDamageActive = null
+shader_parameter/base_tex = ExtResource("5_h68c3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrrm"]
+atlas = ExtResource("5_h68c3")
+region = Rect2(439, 0, 251, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3d1i"]
+atlas = ExtResource("5_h68c3")
+region = Rect2(688, 0, 237, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6wx5"]
+atlas = ExtResource("5_h68c3")
+region = Rect2(0, 0, 221, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjt0y"]
+atlas = ExtResource("5_h68c3")
+region = Rect2(220, 0, 220, 356)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv864"]
+atlas = ExtResource("5_h68c3")
+region = Rect2(0, 0, 221, 356)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_032ac"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3d1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrrm")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6wx5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjt0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv864")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv864")
+}],
+"loop": true,
+"name": &"Shooting",
+"speed": 2.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m1skr"]
 animations = [{
@@ -62,42 +252,71 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
+[node name="TeleportBoss" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_36oft")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684343, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0950032, 0)
 shape = SubResource("CylinderShape3D_1f0y8")
 disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.683588, 0)
-mesh = SubResource("CylinderMesh_o1r5w")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0957582, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_8m282")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Status Display" type="Label3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.52323, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.99636, 0)
 visible = false
 text = "Normal"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00646925, 0.606067, -0.00148129)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00646925, -0.173279, -0.00148129)
 visible = false
 flip_h = true
 pixel_size = 0.006
 texture = ExtResource("1_uaaxy")
 
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.779346, 0)
+visible = false
+sprite_frames = SubResource("SpriteFrames_uwk8l")
+
+[node name="Head" type="AnimatedSprite3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36077e-08, 2.17301, 0.0768803)
+alpha_cut = 3
+sprite_frames = SubResource("SpriteFrames_i72cf")
+frame_progress = 0.538675
+
+[node name="Body" type="AnimatedSprite3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331417, 0)
+material_overlay = SubResource("ShaderMaterial_uradb")
+alpha_cut = 3
+sprite_frames = SubResource("SpriteFrames_brtsk")
+animation = &"Teleporting"
+
+[node name="Arms" type="AnimatedSprite3D" parent="Sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129138, -0.102207, 0.0421007)
+material_overlay = SubResource("ShaderMaterial_x7otr")
+alpha_cut = 3
+sprite_frames = SubResource("SpriteFrames_032ac")
+animation = &"Idle"
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
+one_shot = true
 
 [node name="SpikeWaveTimer" type="Timer" parent="."]
 
 [node name="EffectSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.605466, -0.495366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17388, -0.251473)
 
 [node name="OnFireSprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.807312, -0.625981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0279658, -0.625981)
 visible = false
 pixel_size = 0.03
 sprite_frames = SubResource("SpriteFrames_m1skr")
@@ -105,9 +324,12 @@ sprite_frames = SubResource("SpriteFrames_m1skr")
 [node name="FireDoTTimer" type="Timer" parent="."]
 
 [node name="SpawningSprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.71079, -0.212187)
+transform = Transform3D(3.18, 0, 0, 0, 3.18, 0, 0, 0, 3.18, 0, -0.0685562, -0.212187)
 visible = false
 sprite_frames = SubResource("SpriteFrames_catg0")
+
+[node name="isDamaged" type="Timer" parent="."]
+wait_time = 0.15
 
 [node name="FireDurationTimer" type="Timer" parent="."]
 wait_time = 6.0
@@ -117,10 +339,13 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[connection signal="frame_changed" from="Sprite/Body" to="." method="_on_body_frame_changed"]
+[connection signal="frame_changed" from="Sprite/Arms" to="." method="_on_arms_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_teleport_ready"]
 [connection signal="timeout" from="SpikeWaveTimer" to="." method="_spike_wave_ready"]
 [connection signal="timeout" from="FireDoTTimer" to="." method="_fire_dot_tick"]
 [connection signal="animation_finished" from="SpawningSprite" to="." method="_on_spawning_sprite_animation_finished"]
 [connection signal="frame_changed" from="SpawningSprite" to="." method="_on_spawning_sprite_frame_changed"]
+[connection signal="timeout" from="isDamaged" to="." method="_on_is_damaged_timeout"]
 [connection signal="timeout" from="FireDurationTimer" to="." method="_on_fire_duration_timer_timeout"]
 [connection signal="timeout" from="MeltControl" to="." method="_on_melt_control_timeout"]

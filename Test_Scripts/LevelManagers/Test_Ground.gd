@@ -1,4 +1,4 @@
-class_name test_ground extends Node3D
+class_name test_ground extends component_level
 
 var enemyCount:int = 9
 

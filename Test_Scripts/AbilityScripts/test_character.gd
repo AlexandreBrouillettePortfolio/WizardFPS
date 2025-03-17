@@ -76,33 +76,33 @@ var target_velocity:Vector3 = Vector3.ZERO
 
 func _enter_tree() -> void:
 	var tempTween:Tween = create_tween()
-	tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(0.06, 0.06, 1), 0)
+	tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(0.06, 0.06, 1), 0)
 
 func cast_primary(element:manaType) -> void:
 	primaryShootReady = false
 	if element == manaType.LIGHTNING:
 		primaryShootElement = manaType.LIGHTNING
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
 		($PrimaryCastTime as Timer).wait_time = 0.05
 		($PrimaryCastTime as Timer).start()
 	elif element == manaType.EARTH:
 		primaryShootElement = manaType.EARTH
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Punch_Prep.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Punch_Prep.png")
 		($PrimaryCastTime as Timer).wait_time = 0.15
 		($PrimaryCastTime as Timer).start()
 	elif element == manaType.WIND:
 		primaryShootElement = manaType.WIND
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
 		($PrimaryCastTime as Timer).wait_time = 0.2
 		($PrimaryCastTime as Timer).start()
 	elif element == manaType.ICE:
 		primaryShootElement = manaType.ICE
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Right_Hand.png")
 		($PrimaryCastTime as Timer).wait_time = 0.3
 		($PrimaryCastTime as Timer).start()
 	elif element == manaType.FIRE:
 		primaryShootElement = manaType.FIRE
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Flick_Prep.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Flick_Prep.png")
 		($PrimaryCastTime as Timer).wait_time = 0.15
 		($PrimaryCastTime as Timer).start()
 
@@ -110,27 +110,27 @@ func cast_secondary(element:manaType) -> void:
 	secondaryShootReady = false
 	if element == manaType.LIGHTNING:
 		secondaryShootElement = manaType.LIGHTNING
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
 		($SecondaryCastTime as Timer).wait_time = 0.5
 		($SecondaryCastTime as Timer).start()
 	elif element == manaType.EARTH:
 		secondaryShootElement = manaType.EARTH
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
 		($SecondaryCastTime as Timer).wait_time = 0.35
 		($SecondaryCastTime as Timer).start()
 	elif element == manaType.WIND:
 		secondaryShootElement = manaType.WIND
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
 		($SecondaryCastTime as Timer).wait_time = 0.2
 		($SecondaryCastTime as Timer).start()
 	elif element == manaType.ICE:
 		secondaryShootElement = manaType.ICE
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
 		($SecondaryCastTime as Timer).wait_time = 0.3
 		($SecondaryCastTime as Timer).start()
 	elif element == manaType.FIRE:
 		secondaryShootElement = manaType.FIRE
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Closed_Left_Hand.png")
 		($SecondaryCastTime as Timer).wait_time = 0.4
 		($SecondaryCastTime as Timer).start()
 
@@ -236,7 +236,7 @@ func shoot(type:PackedScene) -> void:
 				get_tree().current_scene.add_child(storm)
 			#($SecondaryCastTime as Timer).start()
 	elif type == WAVE:
-		if manaChange(50, manaType.ICE, ice_mana):
+		if manaChange(0, manaType.ICE, ice_mana): #TODO REMPLACER PAR 50 APRES TESTS
 			var wave:Area3D = WAVE.instantiate()
 			wave.position = Vector3(self.position.x - 1*sin(neck.get_rotation().y), self.position.y - 0.75, 
 										self.position.z - 1*cos(neck.get_rotation().y))
@@ -504,42 +504,42 @@ func changeElement(element:manaType) -> void:
 	var tempTween:Tween = create_tween()
 	if element == manaType.LIGHTNING:
 		selected_element = 1
-		tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(0.06, 0.06, 1), 0)
+		tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(0.06, 0.06, 1), 0)
 	elif element == manaType.EARTH:
 		selected_element = 2
-		tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(0.98, 0.416, 0), 0)
+		tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(0.98, 0.416, 0), 0)
 	elif element == manaType.WIND:
 		selected_element = 3
-		tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(0.22, 1, 0), 0)
+		tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(0.22, 1, 0), 0)
 	elif element == manaType.ICE:
 		selected_element = 4
-		tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(0.18, 1, 1), 0)
+		tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(0.18, 1, 1), 0)
 	elif element == manaType.FIRE:
 		selected_element = 5
-		tempTween.tween_property($Neck/Camera3D/Sprite2D, "modulate", Color(1, 0.105, 0), 0)
+		tempTween.tween_property($Neck/Camera3D/CanvasLayer/CrosshairAnchor/Sprite2D, "modulate", Color(1, 0.105, 0), 0)
 
 func updateManaUI(element:manaType) -> void:
 	if element == manaType.LIGHTNING:
-		(get_node("Neck/Camera3D/LightningManaUI") as TextureProgressBar).value = lightning_mana
-		(get_node("Neck/Camera3D/LightningManaLabel") as Label).text = str(lightning_mana)
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/LightningManaUI") as TextureProgressBar).value = lightning_mana
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/LightningManaLabel") as Label).text = str(lightning_mana)
 	if element == manaType.EARTH:
-		(get_node("Neck/Camera3D/EarthManaUI") as TextureProgressBar).value = earth_mana
-		(get_node("Neck/Camera3D/EarthManaLabel") as Label).text = str(earth_mana)
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/EarthManaUI") as TextureProgressBar).value = earth_mana
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/EarthManaLabel") as Label).text = str(earth_mana)
 	if element == manaType.WIND:
-		(get_node("Neck/Camera3D/WindManaUI") as TextureProgressBar).value = wind_mana
-		(get_node("Neck/Camera3D/WindManaLabel") as Label).text = str(wind_mana)
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/WindManaUI") as TextureProgressBar).value = wind_mana
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/WindManaLabel") as Label).text = str(wind_mana)
 	if element == manaType.ICE:
-		(get_node("Neck/Camera3D/IceManaUI") as TextureProgressBar).value = ice_mana
-		(get_node("Neck/Camera3D/IceManaLabel") as Label).text = str(ice_mana)
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/IceManaUI") as TextureProgressBar).value = ice_mana
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/IceManaLabel") as Label).text = str(ice_mana)
 	if element == manaType.FIRE:
-		(get_node("Neck/Camera3D/FireManaUI") as TextureProgressBar).value = fire_mana
-		(get_node("Neck/Camera3D/FireManaLabel") as Label).text = str(fire_mana)
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/FireManaUI") as TextureProgressBar).value = fire_mana
+		(get_node("Neck/Camera3D/CanvasLayer/GridContainer/FireManaLabel") as Label).text = str(fire_mana)
 
 func updateHealthUI() -> void:
 	if health == 0:
-		(get_node("Neck/Camera3D/HealthLabel") as Label).text = "!!GAME OVER!!"
+		(get_node("Neck/Camera3D/CanvasLayer/HealthLabel") as Label).text = "!!GAME OVER!!"
 	else:
-		(get_node("Neck/Camera3D/HealthLabel") as Label).text = str(health)
+		(get_node("Neck/Camera3D/CanvasLayer/HealthLabel") as Label).text = str(health)
 
 func updateMvmtEffect(effect:int) -> void:
 	if effect == 0: #Normal Movement
@@ -549,7 +549,7 @@ func updateMvmtEffect(effect:int) -> void:
 		($MvmtEffectTimer as Timer).stop()
 	elif effect == 1: #Wind Flight
 		($MvmtEffect as MeshInstance3D).visible = true
-		(($MvmtEffect as MeshInstance3D).mesh.surface_get_material(0) as BaseMaterial3D).set("albedo_color", Color(0.41,0.74,0.18,1))
+		(($MvmtEffect as MeshInstance3D).mesh.surface_get_material(0) as BaseMaterial3D).set("albedo_color", Color(0.41,0.74,0.18,0.3))
 		(($MvmtEffect as MeshInstance3D).mesh.surface_get_material(0) as BaseMaterial3D).set("albedo_texture", load("res://Test_Assets/AbilitySprites/Flight_Wind1.png"))
 		mvmtType = 1
 		($MvmtEffectTimer as Timer).start()
@@ -616,65 +616,65 @@ func _mvmt_effect_rotate() -> void:
 
 func _primary_fire() -> void:
 	if primaryShootElement == manaType.LIGHTNING:
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
 		shoot(LIGHTNING)
 		($HandReset as Timer).wait_time = 0.5
 		($HandReset as Timer).start()
 	elif primaryShootElement == manaType.EARTH:
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Punch_Full.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Punch_Full.png")
 		shoot(PUNCH)
 		($HandReset as Timer).wait_time = 0.2
 		($HandReset as Timer).start()
 	elif primaryShootElement == manaType.WIND:
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
 		windEnabled = true
 		if windEnabled:
 			shoot(WIND)
 	elif primaryShootElement == manaType.ICE:
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Shooting_Right_Hand.png")
 		shoot(PROJECTILE)
 		($HandReset as Timer).wait_time = 0.2
 		($HandReset as Timer).start()
 	elif primaryShootElement == manaType.FIRE:
-		($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Flick_Full.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Flick_Full.png")
 		shoot(FIREBALL)
 		($HandReset as Timer).wait_time = 0.3
 		($HandReset as Timer).start()
 
 func _secondary_fire() -> void:
 	if secondaryShootElement == manaType.LIGHTNING:
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
 		shoot(STORM)
 		($LeftHandReset as Timer).wait_time = 0.5
 		($LeftHandReset as Timer).start()
 	elif secondaryShootElement == manaType.EARTH:
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
 		shoot(EARTHQUAKE)
 		($LeftHandReset as Timer).wait_time = 0.2
 		($LeftHandReset as Timer).start()
 	elif secondaryShootElement == manaType.WIND:
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
 		shoot(TORNADO)
 		($LeftHandReset as Timer).wait_time = 0.2
 		($LeftHandReset as Timer).start()
 	elif secondaryShootElement == manaType.ICE:
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Secondary_Left_Hand.png")
 		shoot(WAVE)
 		($LeftHandReset as Timer).wait_time = 0.2
 		($LeftHandReset as Timer).start()
 	elif secondaryShootElement == manaType.FIRE:
-		($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Fire_Full.png")
+		($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Fire_Full.png")
 		if manaChange(10, manaType.FIRE, fire_mana):
 			flameEnabled = true
 			if flameEnabled:
 				shoot(FLAMETHROWER)
 
 func _reset_hand() -> void:
-	($Neck/Camera3D/RightHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Hand_Main.png")
+	($Neck/Camera3D/CanvasLayer/HandAnchor/RightHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Hand_Main.png")
 	primaryShootReady = true
 
 func _reset_left_hand() -> void:
-	($Neck/Camera3D/LeftHand as Sprite2D).texture = load("res://Test_Assets/PlayerSprites/Hand_Main_Left.png")
+	($Neck/Camera3D/CanvasLayer/HandAnchor/LeftHand as TextureRect).texture = load("res://Test_Assets/PlayerSprites/Hand_Main_Left.png")
 	secondaryShootReady = true
 
 func _on_dash_timer_timeout() -> void:

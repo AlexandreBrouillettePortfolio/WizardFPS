@@ -1,4 +1,4 @@
-class_name stoneTower extends Node3D
+class_name stoneTower extends component_level
 
 var pillarRoomConnections:int = 0
 var teleportRoomConnections:int = 0
@@ -21,9 +21,20 @@ func _enter_tree() -> void:
 					(node as StaticBody3D).set_collision_layer_value(7, true)
 				if "Ceiling" in child.name:
 					(node as StaticBody3D).set_collision_layer_value(8, true)
-
-func enemyKilled() -> void:
-	pass
+	for child in ($Map/Navigation/NavigationRegion3D/StoneTowerArena as Node3D).get_children():
+		for node in child.get_children():
+			if (node is StaticBody3D):
+				(node as StaticBody3D).set_collision_layer_value(1, false)
+				(node as StaticBody3D).set_collision_layer_value(3, true)
+				(node as StaticBody3D).set_collision_mask_value(1, true)
+				(node as StaticBody3D).set_collision_mask_value(2, true)
+				(node as StaticBody3D).set_collision_mask_value(3, true)
+				if "Floor" in child.name:
+					(node as StaticBody3D).set_collision_layer_value(6, true)
+				if "Wall" in child.name:
+					(node as StaticBody3D).set_collision_layer_value(7, true)
+				if "Ceiling" in child.name:
+					(node as StaticBody3D).set_collision_layer_value(8, true)
 
 func _on_teleport_1_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
@@ -55,6 +66,22 @@ func _on_teleport_4_body_entered(body: Node3D) -> void:
 		return
 	if body is test_character:
 		body.position = ($Teleporters/Teleport3Area/MeshInstance3D as Node3D).global_position
+		(body as test_character).neck.rotation.y = 0
+		($Timers/TeleportCooldown as Timer).start()
+
+func _on_teleport_5_body_entered(body: Node3D) -> void:
+	if !($Timers/TeleportCooldown as Timer).is_stopped():
+		return
+	if body is test_character:
+		body.position = ($Teleporters/Teleport6Area/MeshInstance3D as Node3D).global_position
+		(body as test_character).neck.rotation.y = 0
+		($Timers/TeleportCooldown as Timer).start()
+
+func _on_teleport_6_body_entered(body: Node3D) -> void:
+	if !($Timers/TeleportCooldown as Timer).is_stopped():
+		return
+	if body is test_character:
+		body.position = ($Teleporters/Teleport5Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = 0
 		($Timers/TeleportCooldown as Timer).start()
 
@@ -152,4 +179,3 @@ func onTriggerEnter(body: Node3D, id: String) -> void:
 			if node.name == id:
 				for enemy in node.get_children():
 					(enemy as test_enemy).spawn()
-
