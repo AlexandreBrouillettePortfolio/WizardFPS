@@ -1,21 +1,21 @@
 [gd_scene load_steps=31 format=3 uid="uid://bw44dqb2fwyp3"]
 
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_character.gd" id="1_ni5ws"]
-[ext_resource type="Texture2D" uid="uid://dwxvk1l01fb8" path="res://Test_Assets/AbilitySprites/Dash_effect.png" id="2_dqt1t"]
-[ext_resource type="Texture2D" uid="uid://jvlguag5wcg4" path="res://Test_Assets/AbilitySprites/Flight_Wind1.png" id="2_hrj05"]
-[ext_resource type="Texture2D" uid="uid://klaplefgxs0e" path="res://Test_Assets/AbilitySprites/Crosshair.png" id="2_mne8d"]
-[ext_resource type="Texture2D" uid="uid://bchybifbva6af" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle1.png" id="3_2v1fc"]
-[ext_resource type="Texture2D" uid="uid://b505otlwq6c7o" path="res://Test_Assets/PlayerSprites/Hand_Main_Left.png" id="3_b85mr"]
-[ext_resource type="Texture2D" uid="uid://pivlhqdogk3c" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle2.png" id="4_fn25e"]
-[ext_resource type="Texture2D" uid="uid://c1585778q6qpc" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle1.png" id="5_dvxm3"]
-[ext_resource type="Texture2D" uid="uid://cfqqq4pxdxcx1" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle2.png" id="6_o126g"]
-[ext_resource type="Texture2D" uid="uid://c5jrkwluffbd1" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle1.png" id="7_5chwi"]
-[ext_resource type="Texture2D" uid="uid://ccn8c3qmwue25" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle2.png" id="8_2w6yr"]
-[ext_resource type="Texture2D" uid="uid://c2beme7s1devw" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle1.png" id="9_os3hj"]
-[ext_resource type="Texture2D" uid="uid://fk8nkx28awb7" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle2.png" id="10_6crai"]
-[ext_resource type="Texture2D" uid="uid://buuja2j1osmkm" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle1.png" id="11_4pqkd"]
-[ext_resource type="Texture2D" uid="uid://bkxlcbxtkcovv" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle2.png" id="12_2tsas"]
-[ext_resource type="Texture2D" uid="uid://86js4hvwhtdc" path="res://Test_Assets/PlayerSprites/Hand_Main.png" id="14_2v6ln"]
+[ext_resource type="Texture2D" uid="uid://00shv11tlmp1" path="res://Test_Assets/AbilitySprites/Dash_effect.png" id="2_dqt1t"]
+[ext_resource type="Texture2D" uid="uid://chvv3geev2dqx" path="res://Test_Assets/AbilitySprites/Flight_Wind1.png" id="2_hrj05"]
+[ext_resource type="Texture2D" uid="uid://kf6hq56i5t07" path="res://Test_Assets/AbilitySprites/Crosshair.png" id="2_mne8d"]
+[ext_resource type="Texture2D" uid="uid://dgeo8a3lhsdgw" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle1.png" id="3_2v1fc"]
+[ext_resource type="Texture2D" uid="uid://cnyynjl34umf7" path="res://Test_Assets/PlayerSprites/Hand_Main_Left.png" id="3_b85mr"]
+[ext_resource type="Texture2D" uid="uid://cplnamr6nni4y" path="res://Test_Assets/ItemSprites/Lightning_Mana_Bottle2.png" id="4_fn25e"]
+[ext_resource type="Texture2D" uid="uid://cq8kma2iyna1n" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle1.png" id="5_dvxm3"]
+[ext_resource type="Texture2D" uid="uid://kyw7gwl5am0v" path="res://Test_Assets/ItemSprites/Earth_Mana_Bottle2.png" id="6_o126g"]
+[ext_resource type="Texture2D" uid="uid://bn4y1tkq5mij4" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle1.png" id="7_5chwi"]
+[ext_resource type="Texture2D" uid="uid://daohi78bbdpnb" path="res://Test_Assets/ItemSprites/Wind_Mana_Bottle2.png" id="8_2w6yr"]
+[ext_resource type="Texture2D" uid="uid://0y1mb8o17o8j" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle1.png" id="9_os3hj"]
+[ext_resource type="Texture2D" uid="uid://ckwni14kd4rjy" path="res://Test_Assets/ItemSprites/Ice_Mana_Bottle2.png" id="10_6crai"]
+[ext_resource type="Texture2D" uid="uid://wits4m6cb8s0" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle1.png" id="11_4pqkd"]
+[ext_resource type="Texture2D" uid="uid://ki3erfl1wiwo" path="res://Test_Assets/ItemSprites/Fire_Mana_Bottle2.png" id="12_2tsas"]
+[ext_resource type="Texture2D" uid="uid://c1be88xnuduje" path="res://Test_Assets/PlayerSprites/Hand_Main.png" id="14_2v6ln"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u08lq"]
 radius = 0.33
@@ -158,128 +158,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.417723, 0)
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 fov = 90.0
 
-[node name="LeftHand" type="Sprite2D" parent="Neck/Camera3D"]
-position = Vector2(311, 500)
-texture = ExtResource("3_b85mr")
-
-[node name="RightHand" type="Sprite2D" parent="Neck/Camera3D"]
-position = Vector2(844, 500)
-texture = ExtResource("14_2v6ln")
-
-[node name="Sprite2D" type="Sprite2D" parent="Neck/Camera3D"]
-position = Vector2(576, 320)
-texture = ExtResource("2_mne8d")
-
-[node name="HealthLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 556.0
-offset_top = 325.0
-offset_right = 611.0
-offset_bottom = 357.0
-text = "100"
-label_settings = SubResource("LabelSettings_3vojx")
-
-[node name="LightningManaLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 19.0
-offset_top = 520.0
-offset_right = 59.0
-offset_bottom = 551.0
-text = "100"
-label_settings = SubResource("LabelSettings_j6hy1")
-horizontal_alignment = 1
-
-[node name="LightningManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
-offset_left = 1.0
-offset_top = 547.0
-offset_right = 75.0
-offset_bottom = 647.0
-value = 100.0
-fill_mode = 3
-texture_over = ExtResource("3_2v1fc")
-texture_progress = ExtResource("4_fn25e")
-texture_progress_offset = Vector2(6, 12)
-
-[node name="EarthManaLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 96.0
-offset_top = 519.0
-offset_right = 136.0
-offset_bottom = 550.0
-text = "100
-"
-label_settings = SubResource("LabelSettings_qm0vb")
-horizontal_alignment = 1
-
-[node name="EarthManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
-offset_left = 79.0
-offset_top = 547.0
-offset_right = 153.0
-offset_bottom = 647.0
-value = 100.0
-fill_mode = 3
-texture_over = ExtResource("5_dvxm3")
-texture_progress = ExtResource("6_o126g")
-texture_progress_offset = Vector2(6, 12)
-
-[node name="WindManaLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 175.0
-offset_top = 520.0
-offset_right = 215.0
-offset_bottom = 551.0
-text = "100
-"
-label_settings = SubResource("LabelSettings_5eqoc")
-horizontal_alignment = 1
-
-[node name="WindManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
-offset_left = 157.0
-offset_top = 547.0
-offset_right = 231.0
-offset_bottom = 647.0
-value = 100.0
-fill_mode = 3
-texture_over = ExtResource("7_5chwi")
-texture_progress = ExtResource("8_2w6yr")
-texture_progress_offset = Vector2(6, 12)
-
-[node name="IceManaLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 253.0
-offset_top = 520.0
-offset_right = 293.0
-offset_bottom = 551.0
-text = "100"
-label_settings = SubResource("LabelSettings_lbyus")
-horizontal_alignment = 1
-
-[node name="IceManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
-offset_left = 235.0
-offset_top = 547.0
-offset_right = 309.0
-offset_bottom = 647.0
-value = 100.0
-fill_mode = 3
-texture_over = ExtResource("9_os3hj")
-texture_progress = ExtResource("10_6crai")
-texture_progress_offset = Vector2(6, 12)
-
-[node name="FireManaLabel" type="Label" parent="Neck/Camera3D"]
-offset_left = 331.0
-offset_top = 520.0
-offset_right = 371.0
-offset_bottom = 551.0
-text = "100"
-label_settings = SubResource("LabelSettings_1lxji")
-horizontal_alignment = 1
-
-[node name="FireManaUI" type="TextureProgressBar" parent="Neck/Camera3D"]
-offset_left = 313.0
-offset_top = 547.0
-offset_right = 387.0
-offset_bottom = 647.0
-value = 100.0
-fill_mode = 3
-texture_over = ExtResource("11_4pqkd")
-texture_progress = ExtResource("12_2tsas")
-texture_progress_offset = Vector2(6, 12)
-
 [node name="RayCast3D" type="RayCast3D" parent="Neck/Camera3D"]
 target_position = Vector3(0, 0, -50)
 collision_mask = 238
@@ -287,6 +165,167 @@ hit_back_faces = false
 collide_with_areas = true
 debug_shape_custom_color = Color(0.884365, 0, 0.0101643, 1)
 debug_shape_thickness = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Neck/Camera3D"]
+
+[node name="CrosshairAnchor" type="TextureRect" parent="Neck/Camera3D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Neck/Camera3D/CanvasLayer/CrosshairAnchor"]
+position = Vector2(20, 16)
+texture = ExtResource("2_mne8d")
+
+[node name="HandAnchor" type="BoxContainer" parent="Neck/Camera3D/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -555.5
+offset_top = -297.0
+offset_right = 555.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="LeftHandOld" type="Sprite2D" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+visible = false
+position = Vector2(157.5, 78)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_b85mr")
+
+[node name="RightHandOld" type="Sprite2D" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+visible = false
+position = Vector2(935.5, 77)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("14_2v6ln")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+custom_minimum_size = Vector2(105.985, 0)
+layout_mode = 2
+
+[node name="LeftHand" type="TextureRect" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+layout_mode = 2
+texture = ExtResource("3_b85mr")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+custom_minimum_size = Vector2(336.515, 0)
+layout_direction = 2
+layout_mode = 2
+
+[node name="RightHand" type="TextureRect" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+layout_mode = 2
+texture = ExtResource("14_2v6ln")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Panel" type="Panel" parent="Neck/Camera3D/CanvasLayer/HandAnchor"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="Neck/Camera3D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = 9.0
+offset_right = 36.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+label_settings = SubResource("LabelSettings_3vojx")
+
+[node name="GridContainer" type="GridContainer" parent="Neck/Camera3D/CanvasLayer"]
+offset_left = 2.0
+offset_top = 511.0
+offset_right = 388.0
+offset_bottom = 647.0
+columns = 5
+
+[node name="LightningManaLabel" type="Label" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_j6hy1")
+horizontal_alignment = 1
+
+[node name="EarthManaLabel" type="Label" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_qm0vb")
+horizontal_alignment = 1
+
+[node name="WindManaLabel" type="Label" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+text = "100
+"
+label_settings = SubResource("LabelSettings_5eqoc")
+horizontal_alignment = 1
+
+[node name="IceManaLabel" type="Label" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_lbyus")
+horizontal_alignment = 1
+
+[node name="FireManaLabel" type="Label" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_1lxji")
+horizontal_alignment = 1
+
+[node name="LightningManaUI" type="TextureProgressBar" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("3_2v1fc")
+texture_progress = ExtResource("4_fn25e")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="EarthManaUI" type="TextureProgressBar" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("5_dvxm3")
+texture_progress = ExtResource("6_o126g")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="WindManaUI" type="TextureProgressBar" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("7_5chwi")
+texture_progress = ExtResource("8_2w6yr")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="IceManaUI" type="TextureProgressBar" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("9_os3hj")
+texture_progress = ExtResource("10_6crai")
+texture_progress_offset = Vector2(6, 12)
+
+[node name="FireManaUI" type="TextureProgressBar" parent="Neck/Camera3D/CanvasLayer/GridContainer"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_over = ExtResource("11_4pqkd")
+texture_progress = ExtResource("12_2tsas")
+texture_progress_offset = Vector2(6, 12)
 
 [connection signal="timeout" from="MvmtEffectTimer" to="." method="_mvmt_effect_rotate"]
 [connection signal="timeout" from="PrimaryCastTime" to="." method="_primary_fire"]

@@ -30,6 +30,16 @@ func spawn() -> void:
 	($SpawningSprite as Node3D).visible = true
 	($SpawningSprite as AnimatedSprite3D).play()
 	set_visible(true)
+	ChildSpawnParameters()
+
+func spawnDummy() -> void:
+	set_visible(true)
+	startAnim()
+	enableAI(true)
+	ChildSpawnParameters()
+
+func ChildSpawnParameters() -> void:
+	pass
 
 func actor_setup() -> void:
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -92,7 +102,7 @@ func isDamaged(damage:int, dmgType:int, strength:int = 1, dmgDir:Vector3 = Vecto
 	if !invincible:
 		health -= damage
 		if health <= 0:
-			(get_node("/root/Level") as stoneTower).enemyKilled()
+			FlagDeath()
 			queue_free()
 		if damage > 0:
 			showDamage()
@@ -121,6 +131,7 @@ func isDamaged(damage:int, dmgType:int, strength:int = 1, dmgDir:Vector3 = Vecto
 				(e1 as test_ice_explosion).size = 1+strength
 				get_tree().current_scene.get_parent().add_child(e1)
 				e1.global_position = self.global_position
+				print(e1.name)
 			elif isImpaired == 0:
 				coldStacks += strength
 				if coldStacks >= freezeLimit/3:
@@ -161,6 +172,7 @@ func setOnFire(status:bool) -> void:
 
 func explode(explosionType:int, direction:Vector3 = Vector3.ZERO, throwStrength:float = 0) -> void:
 	#1 = Frozen, 2 = Petrified Punched, 3 = Melted
+	FlagDeath()
 	if explosionType == 1:
 		var explosion:PackedScene = load("res://Test_Objects/test_ice_explosion.tscn")
 		var e1:Area3D = explosion.instantiate()
@@ -187,6 +199,9 @@ func explode(explosionType:int, direction:Vector3 = Vector3.ZERO, throwStrength:
 								self.position.z)
 		get_tree().current_scene.add_child(l)
 		($MeltControl as Timer).start()
+
+func FlagDeath() -> void:
+	(get_node("/root/Level") as component_level).enemyKilled() 
 
 func startAnim() -> void:
 	pass

@@ -11,7 +11,7 @@ func _physics_process(_delta:float) -> void:
 	var velocity:Vector3 = transform.basis.y * speed
 	distanceTraveled += speed * _delta
 	position += velocity * _delta
-	if canSplit and distanceTraveled > 10:
+	if canSplit and distanceTraveled > 5:
 		split()
 		canSplit = false
 
