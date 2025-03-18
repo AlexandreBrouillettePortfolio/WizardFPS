@@ -5,7 +5,7 @@ Currently in the prototyping phase, this is an FPS where the player controls a m
 
 All assets are made by me, with the exception of the files currently in Placeholder Sprites and Sounds.
 
-Link to showcase:
+Link to showcase: https://www.youtube.com/watch?v=zmMWghNoNko
 
 Guide to File Tree:
 - Test_Assets: Contains the assets made for the project, from textures to the shaders.
