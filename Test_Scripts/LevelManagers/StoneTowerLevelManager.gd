@@ -39,6 +39,7 @@ func _enter_tree() -> void:
 func _on_teleport_1_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Map/WorldEnvironment as WorldEnvironment).environment.ambient_light_source = Environment.AMBIENT_SOURCE_BG
 	if body is test_character:
 		body.position = ($Teleporters/Teleport2Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = -1.5708
@@ -47,6 +48,7 @@ func _on_teleport_1_body_entered(body: Node3D) -> void:
 func _on_teleport_2_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Map/WorldEnvironment as WorldEnvironment).environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 	if body is test_character:
 		($Triggers/MainReturn1/CollisionShape3D as CollisionShape3D).set_deferred("disabled", false)
 		body.position = ($Teleporters/Teleport1Area/MeshInstance3D as Node3D).global_position
@@ -98,11 +100,10 @@ func _on_spellbook_pillar_tree_exited() -> void:
 	($Doors/StoneDoorPillarExit as stone_door).deactivate()
 
 func _on_spellbook_earthquake_tree_exited() -> void:
-	if get_node_or_null("Map/Navigation/NavigationRegion3D/Pillars/PillarEarthquakeSpell") != null:
-		($Map/Navigation/NavigationRegion3D/Pillars/PillarEarthquakeSpell as Node3D).queue_free()
-	(($Interactables/DestructibleRocksEarthquakeTutorial) as Node3D).visible = true
-	(($Interactables/DestructibleRocksEarthquakeTutorial/CollisionShape3D) as CollisionShape3D).set_deferred("disabled", false)
-
+	($Lighting/CeilingLights/ChandelierEarthquake as activatable).activate()
+	($Lighting/CeilingLights/ChandelierTwoStage as activatable).activate()
+	($Lighting/CeilingLights/Chandelier2ndDeathTrap as activatable).activate()
+	
 func pillarRoomConnectionMade(body:Node3D) -> void:
 	if body is test_earthwall:
 		checkPillarRoomDoors(1)

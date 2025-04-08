@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc45s6sha7b34"]
+
+[ext_resource type="Script" path="res://Test_Scripts/LevelManagers/GameStart.gd" id="1_3meyd"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -256.0
+offset_right = 126.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GameStart" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Start Demo"
+script = ExtResource("1_3meyd")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Options"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 477.0
+offset_top = 251.0
+offset_right = 698.0
+offset_bottom = 291.0
+text = "Ta Mere En Shorts -Demo-"
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/GameStart" to="CanvasLayer/GridContainer/GameStart" method="_add_a_scene_manually"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Quit" to="CanvasLayer/GridContainer/GameStart" method="_quit"]

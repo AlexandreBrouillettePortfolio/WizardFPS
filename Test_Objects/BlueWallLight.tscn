@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxof0x654pxtf"]
+
+[ext_resource type="PackedScene" uid="uid://csm6gp0aan6x1" path="res://Test_Assets/Models/BlueWallLight.glb" id="1_jwi3f"]
+
+[node name="Node3D" type="StaticBody3D"]
+
+[node name="BlueWallLight" parent="." instance=ExtResource("1_jwi3f")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.619165, 0.41571, 1, 1)
+light_energy = 2.0
+shadow_enabled = true

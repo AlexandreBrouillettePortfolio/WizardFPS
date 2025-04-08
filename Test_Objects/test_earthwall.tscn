@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://co3dh0paggvcd"]
 
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_earthwall.gd" id="1_ymx5p"]
-[ext_resource type="Texture2D" uid="uid://dp1m747yf7gj2" path="res://Test_Assets/Textures/PillarSprite.png" id="2_rj37m"]
-[ext_resource type="Texture2D" uid="uid://d1sf5omnv13rc" path="res://Test_Assets/Textures/PillarSpriteNormal.png" id="3_eba5q"]
-[ext_resource type="Texture2D" uid="uid://c7di55mm57fmy" path="res://Test_Assets/Textures/PillarSpriteHeight.png" id="3_jaj7x"]
+[ext_resource type="Texture2D" uid="uid://cmjmsdq28f0wm" path="res://Test_Assets/Textures/PillarSprite.png" id="2_rj37m"]
+[ext_resource type="Texture2D" uid="uid://cydr1vybyu5ef" path="res://Test_Assets/Textures/PillarSpriteNormal.png" id="3_eba5q"]
+[ext_resource type="Texture2D" uid="uid://dbs3a4rxpk8vn" path="res://Test_Assets/Textures/PillarSpriteHeight.png" id="3_jaj7x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51a2k"]
 resource_local_to_scene = true

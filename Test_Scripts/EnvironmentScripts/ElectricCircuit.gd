@@ -17,9 +17,10 @@ func electrify() -> void:
 		if collision is pillarSwitch:
 			#print("pillarSwitch electrifying")
 			(collision as pillarSwitch).electrify()
-	($OmniLight3D as OmniLight3D).visible = true
-	#($MeshInstance3D2 as MeshInstance3D).visible = true
-
+	#($OmniLight3D as OmniLight3D).visible = true
+	($MeshInstance3D2 as MeshInstance3D).visible = true
+	((($MeshInstance3D as MeshInstance3D).mesh as BoxMesh).surface_get_material(0) as StandardMaterial3D).emission_enabled = true
+	((($MeshInstance3D as MeshInstance3D).mesh as BoxMesh).surface_get_material(0) as StandardMaterial3D).emission_energy_multiplier = 0.5
 func depower() -> void:
 	if !electrified:
 		return
@@ -31,5 +32,6 @@ func depower() -> void:
 				(collision as electricCircuit).depower()
 		if collision is electricSwitch:
 			(collision as electricSwitch).connectionInactive()
-	($OmniLight3D as OmniLight3D).visible = false
-	#($MeshInstance3D2 as MeshInstance3D).visible = false
+	#($OmniLight3D as OmniLight3D).visible = false
+	($MeshInstance3D2 as MeshInstance3D).visible = false
+	((($MeshInstance3D as MeshInstance3D).mesh as BoxMesh).surface_get_material(0) as StandardMaterial3D).emission_enabled = false

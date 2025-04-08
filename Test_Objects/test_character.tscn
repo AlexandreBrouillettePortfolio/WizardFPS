@@ -327,9 +327,56 @@ texture_over = ExtResource("11_4pqkd")
 texture_progress = ExtResource("12_2tsas")
 texture_progress_offset = Vector2(6, 12)
 
+[node name="PauseMenu" type="CanvasLayer" parent="Neck/Camera3D"]
+process_mode = 2
+visible = false
+
+[node name="GridContainer" type="GridContainer" parent="Neck/Camera3D/PauseMenu"]
+offset_left = 455.0
+offset_top = 185.0
+offset_right = 698.0
+offset_bottom = 454.0
+
+[node name="Resume" type="Button" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resume"
+
+[node name="MarginContainer" type="MarginContainer" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Options" type="Button" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Options"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Main Menu" type="Button" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Main Menu
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Neck/Camera3D/PauseMenu/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quit"
+
 [connection signal="timeout" from="MvmtEffectTimer" to="." method="_mvmt_effect_rotate"]
 [connection signal="timeout" from="PrimaryCastTime" to="." method="_primary_fire"]
 [connection signal="timeout" from="SecondaryCastTime" to="." method="_secondary_fire"]
 [connection signal="timeout" from="HandReset" to="." method="_reset_hand"]
 [connection signal="timeout" from="LeftHandReset" to="." method="_reset_left_hand"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="pressed" from="Neck/Camera3D/PauseMenu/GridContainer/Resume" to="." method="set_game_running_status"]
+[connection signal="pressed" from="Neck/Camera3D/PauseMenu/GridContainer/Main Menu" to="." method="return_to_main_menu"]
+[connection signal="pressed" from="Neck/Camera3D/PauseMenu/GridContainer/Quit" to="." method="quit"]

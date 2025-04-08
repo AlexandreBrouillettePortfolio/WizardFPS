@@ -257,7 +257,8 @@ func shoot(type:PackedScene) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		#get_tree().paused = false
+		#if (get_tree().paused):
+			#set_game_running_status(true)
 		if event.is_action_pressed("primary_fire"):
 			if primaryShootReady:
 				if selected_element == 1:
@@ -309,7 +310,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			changeElement(manaType.FIRE)
 		elif event.is_action_pressed("ui_cancel"):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			#get_tree().paused = true
+			get_tree().paused = true
+			($Neck/Camera3D/PauseMenu as CanvasLayer).visible = true
 		elif event.is_action_pressed("slide"):
 			if manaChange(10, manaType.LIGHTNING, lightning_mana):
 				isDashing = true
@@ -421,6 +423,17 @@ func _physics_process(delta:float) -> void:
 	else:
 		velocity = target_velocity
 	move_and_slide()
+
+func set_game_running_status() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
+	($Neck/Camera3D/PauseMenu as CanvasLayer).visible = false
+
+func return_to_main_menu() -> void:
+	get_tree().change_scene_to_file("res://Test_Scenes/MainMenu.tscn")
+
+func quit() -> void:
+	get_tree().quit()
 
 func manaChange(cost:int, element:manaType, elementMana:int, isManaAdded:bool = true) -> bool:
 	if canRemoveMana(cost, elementMana):
@@ -747,3 +760,4 @@ func obsoleteCodeDONOTUSE() -> void:
 				#print(hit_object.global_position)
 				#lightning.position = -transform.basis.z.normalized().z + (lightning.texture.get_size().x)/2
 				#get_tree().current_scene.add_child(lightning)
+

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmhpq8vpj1ak2"]
 
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_flamethrower.gd" id="1_pqoaw"]
-[ext_resource type="Texture2D" uid="uid://dwk2lwn6revau" path="res://Test_Assets/AbilitySprites/Flamethrower.png" id="2_hndu5"]
+[ext_resource type="Texture2D" uid="uid://c07oknpbsnxvy" path="res://Test_Assets/AbilitySprites/Flamethrower.png" id="2_hndu5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_svgtt"]
 resource_local_to_scene = true
@@ -19,5 +19,9 @@ shape = SubResource("SphereShape3D_svgtt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0293784, 0.0341102, 0)
 pixel_size = 0.005
 texture = ExtResource("2_hndu5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.196078, 0, 1)
+omni_range = 3.0
 
 [connection signal="body_entered" from="." to="." method="_flame_entered"]
