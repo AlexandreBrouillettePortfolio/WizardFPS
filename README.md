@@ -15,3 +15,4 @@ Guide to File Tree:
 - Test_Objects: Contains all non-scene .tscn files
 - Test_Scenes: Contains the .tscn files which can be started as a playable scene.
 - Test_Scripts: Contains all the .gd script files.
+- Text_VFX: Contains all Visual Shader, Texture and Object files for visual effects.
