@@ -7,7 +7,6 @@ var earthquake4Connections:int = 0
 
 func _enter_tree() -> void:
 	for child in ($Map/Navigation/NavigationRegion3D/StoneTower as Node3D).get_children():
-		print(child.name)
 		for node in child.get_children():
 			if (node is StaticBody3D):
 				(node as StaticBody3D).set_collision_layer_value(1, false)
@@ -39,6 +38,11 @@ func _enter_tree() -> void:
 func _on_teleport_1_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Map/WorldEnvironment as WorldEnvironment).environment.ambient_light_source = Environment.AMBIENT_SOURCE_BG
+	($Lighting/Torches/Part1 as Node3D).visible = false
+	($Lighting/CeilingLights/Part1 as Node3D).visible = false
+	($Lighting/Torches/Exterior as Node3D).visible = true
+	($Lighting/CeilingLights/Exterior as Node3D).visible = true
 	if body is test_character:
 		body.position = ($Teleporters/Teleport2Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = -1.5708
@@ -47,6 +51,11 @@ func _on_teleport_1_body_entered(body: Node3D) -> void:
 func _on_teleport_2_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Map/WorldEnvironment as WorldEnvironment).environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	($Lighting/Torches/Part1 as Node3D).visible = true
+	($Lighting/CeilingLights/Part1 as Node3D).visible = true
+	($Lighting/Torches/Exterior as Node3D).visible = false
+	($Lighting/CeilingLights/Exterior as Node3D).visible = false
 	if body is test_character:
 		($Triggers/MainReturn1/CollisionShape3D as CollisionShape3D).set_deferred("disabled", false)
 		body.position = ($Teleporters/Teleport1Area/MeshInstance3D as Node3D).global_position
@@ -56,6 +65,10 @@ func _on_teleport_2_body_entered(body: Node3D) -> void:
 func _on_teleport_3_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Lighting/Torches/Part1 as Node3D).visible = false
+	($Lighting/CeilingLights/Part1 as Node3D).visible = false
+	($Lighting/Torches/Basement as Node3D).visible = true
+	($Lighting/CeilingLights/Basement as Node3D).visible = true
 	if body is test_character:
 		body.position = ($Teleporters/Teleport4Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = 0
@@ -64,6 +77,10 @@ func _on_teleport_3_body_entered(body: Node3D) -> void:
 func _on_teleport_4_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Lighting/Torches/Part1 as Node3D).visible = true
+	($Lighting/CeilingLights/Part1 as Node3D).visible = true
+	($Lighting/Torches/Basement as Node3D).visible = false
+	($Lighting/CeilingLights/Basement as Node3D).visible = false
 	if body is test_character:
 		body.position = ($Teleporters/Teleport3Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = 0
@@ -72,6 +89,8 @@ func _on_teleport_4_body_entered(body: Node3D) -> void:
 func _on_teleport_5_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Lighting/Torches/Part2 as Node3D).visible = true
+	($Lighting/CeilingLights/Part2 as Node3D).visible = true
 	if body is test_character:
 		body.position = ($Teleporters/Teleport6Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = 0
@@ -80,6 +99,8 @@ func _on_teleport_5_body_entered(body: Node3D) -> void:
 func _on_teleport_6_body_entered(body: Node3D) -> void:
 	if !($Timers/TeleportCooldown as Timer).is_stopped():
 		return
+	($Lighting/Torches/Part2 as Node3D).visible = false
+	($Lighting/CeilingLights/Part2 as Node3D).visible = false
 	if body is test_character:
 		body.position = ($Teleporters/Teleport5Area/MeshInstance3D as Node3D).global_position
 		(body as test_character).neck.rotation.y = 0
@@ -98,11 +119,10 @@ func _on_spellbook_pillar_tree_exited() -> void:
 	($Doors/StoneDoorPillarExit as stone_door).deactivate()
 
 func _on_spellbook_earthquake_tree_exited() -> void:
-	if get_node_or_null("Map/Navigation/NavigationRegion3D/Pillars/PillarEarthquakeSpell") != null:
-		($Map/Navigation/NavigationRegion3D/Pillars/PillarEarthquakeSpell as Node3D).queue_free()
-	(($Interactables/DestructibleRocksEarthquakeTutorial) as Node3D).visible = true
-	(($Interactables/DestructibleRocksEarthquakeTutorial/CollisionShape3D) as CollisionShape3D).set_deferred("disabled", false)
-
+	($Lighting/CeilingLights/Part2/ChandelierEarthquake as activatable).activate()
+	($Lighting/CeilingLights/Part2/ChandelierTwoStage as activatable).activate()
+	($Lighting/CeilingLights/Part2/Chandelier2ndDeathTrap as activatable).activate()
+	
 func pillarRoomConnectionMade(body:Node3D) -> void:
 	if body is test_earthwall:
 		checkPillarRoomDoors(1)
@@ -179,3 +199,23 @@ func onTriggerEnter(body: Node3D, id: String) -> void:
 			if node.name == id:
 				for enemy in node.get_children():
 					(enemy as test_enemy).spawn()
+
+func lightArenaOrDoor(body: Node3D) -> void:
+	if body.position.z < -81.68:
+		for child in ($Lighting/Torches/Part2 as Node3D).get_children():
+			if child.name.contains("TorchArena"):
+				(child as Node3D).visible = false
+			if child.name.contains("TorchBossEntry"):
+				(child as Node3D).visible = true
+		for child in ($Lighting/CeilingLights/Part2 as Node3D).get_children():
+			if child.name.contains("SkylightArena") or child.name.contains("ChandelierArena"):
+				(child as Node3D).visible = false
+	else:
+		for child in ($Lighting/Torches/Part2 as Node3D).get_children():
+			if child.name.contains("TorchArena"):
+				(child as Node3D).visible = true
+			if child.name.contains("TorchBossEntry"):
+				(child as Node3D).visible = false
+		for child in ($Lighting/CeilingLights/Part2 as Node3D).get_children():
+			if child.name.contains("SkylightArena") or child.name.contains("ChandelierArena"):
+				(child as Node3D).visible = true

@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpfcs1irbocnw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8gi2"]
+cull_mode = 2
+albedo_color = Color(0.632254, 0, 0.00511043, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ugs7a"]
+material = SubResource("StandardMaterial3D_l8gi2")
+size = Vector2(4, 1)
+subdivide_width = 3
+subdivide_depth = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_je1en"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h05v4"]
+material = SubResource("StandardMaterial3D_je1en")
+size = Vector3(0.15, 0.01, 0.01)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0r2kx"]
+data = PackedVector3Array(-0.075, 0.005, 0.005, 0.075, 0.005, 0.005, -0.075, -0.005, 0.005, 0.075, 0.005, 0.005, 0.075, -0.005, 0.005, -0.075, -0.005, 0.005, 0.075, 0.005, -0.005, -0.075, 0.005, -0.005, 0.075, -0.005, -0.005, -0.075, 0.005, -0.005, -0.075, -0.005, -0.005, 0.075, -0.005, -0.005, 0.075, 0.005, 0.005, 0.075, 0.005, -0.005, 0.075, -0.005, 0.005, 0.075, 0.005, -0.005, 0.075, -0.005, -0.005, 0.075, -0.005, 0.005, -0.075, 0.005, -0.005, -0.075, 0.005, 0.005, -0.075, -0.005, -0.005, -0.075, 0.005, 0.005, -0.075, -0.005, 0.005, -0.075, -0.005, -0.005, 0.075, 0.005, 0.005, -0.075, 0.005, 0.005, 0.075, 0.005, -0.005, -0.075, 0.005, 0.005, -0.075, 0.005, -0.005, 0.075, 0.005, -0.005, -0.075, -0.005, 0.005, 0.075, -0.005, 0.005, -0.075, -0.005, -0.005, 0.075, -0.005, 0.005, 0.075, -0.005, -0.005, -0.075, -0.005, -0.005)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_llxxo"]
+data = PackedVector3Array(-0.075, 0.005, 0.005, 0.075, 0.005, 0.005, -0.075, -0.005, 0.005, 0.075, 0.005, 0.005, 0.075, -0.005, 0.005, -0.075, -0.005, 0.005, 0.075, 0.005, -0.005, -0.075, 0.005, -0.005, 0.075, -0.005, -0.005, -0.075, 0.005, -0.005, -0.075, -0.005, -0.005, 0.075, -0.005, -0.005, 0.075, 0.005, 0.005, 0.075, 0.005, -0.005, 0.075, -0.005, 0.005, 0.075, 0.005, -0.005, 0.075, -0.005, -0.005, 0.075, -0.005, 0.005, -0.075, 0.005, -0.005, -0.075, 0.005, 0.005, -0.075, -0.005, -0.005, -0.075, 0.005, 0.005, -0.075, -0.005, 0.005, -0.075, -0.005, -0.005, 0.075, 0.005, 0.005, -0.075, 0.005, 0.005, 0.075, 0.005, -0.005, -0.075, 0.005, 0.005, -0.075, 0.005, -0.005, 0.075, 0.005, -0.005, -0.075, -0.005, 0.005, 0.075, -0.005, 0.005, -0.075, -0.005, -0.005, 0.075, -0.005, 0.005, 0.075, -0.005, -0.005, -0.075, -0.005, -0.005)
+
+[node name="Node3D" type="Area3D"]
+collision_layer = 6
+collision_mask = 7
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ugs7a")
+collision_layer = 6
+collision_mask = 7
+parent_collision_ignore = NodePath("..")
+total_mass = 0.01
+pinned_points = [0, 20]
+attachments/0/point_index = 0
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 20
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+
+[node name="Pieux" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0581311, 0.0570656)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pieux"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0443362, 1.93187, 0.441844)
+mesh = SubResource("BoxMesh_h05v4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieux"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0443362, 1.93187, 0.441844)
+shape = SubResource("ConcavePolygonShape3D_0r2kx")
+
+[node name="Pieux2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0604271, -0.0338683)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pieux2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0443362, 1.93187, -0.447655)
+mesh = SubResource("BoxMesh_h05v4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pieux2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0443362, 1.93187, -0.447655)
+shape = SubResource("ConcavePolygonShape3D_llxxo")

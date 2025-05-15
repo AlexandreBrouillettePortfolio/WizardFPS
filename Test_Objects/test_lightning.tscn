@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c83wb2o8jl0uh"]
+[gd_scene load_steps=6 format=3 uid="uid://c83wb2o8jl0uh"]
 
-[ext_resource type="Texture2D" uid="uid://c6jwo4qakj3tb" path="res://Test_Assets/AbilitySprites/lightning_test.png" id="1_h5bgt"]
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_lightning.gd" id="2_2raxg"]
+[ext_resource type="ArrayMesh" uid="uid://digniqd6xe52n" path="res://Test_VFX/lightning_mesh_straight_editable.tres" id="2_itx16"]
+
+[sub_resource type="Gradient" id="Gradient_ij541"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_01081"]
+gradient = SubResource("Gradient_ij541")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gxo00"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_01081")
 
 [node name="Sprite3D" type="Sprite3D"]
 offset = Vector2(500, 0)
 axis = 0
 texture_filter = 2
-texture = ExtResource("1_h5bgt")
 region_enabled = true
 region_rect = Rect2(0, 0, 1000, 100)
 script = ExtResource("2_2raxg")
@@ -18,11 +26,44 @@ light_color = Color(0, 0.65098, 1, 1)
 omni_range = 6.433
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.71617)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.71617)
 light_color = Color(0, 0.65098, 1, 1)
 omni_range = 6.433
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.53169)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5317)
+light_color = Color(0, 0.65098, 1, 1)
+omni_range = 6.433
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, -15)
+amount = 1
+lifetime = 0.6
+interp_to_end = 0.05
+fixed_fps = 60
+visibility_aabb = AABB(-2, 0, -2, 4, 15, 4)
+process_material = SubResource("ParticleProcessMaterial_gxo00")
+draw_pass_1 = ExtResource("2_itx16")
+
+[node name="Extension" type="Node3D" parent="."]
+visible = false
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Extension"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, -30)
+amount = 1
+lifetime = 0.45
+interp_to_end = 0.05
+fixed_fps = 60
+visibility_aabb = AABB(-2, 0, -2, 4, 15, 4)
+process_material = SubResource("ParticleProcessMaterial_gxo00")
+draw_pass_1 = ExtResource("2_itx16")
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.7888)
+light_color = Color(0, 0.65098, 1, 1)
+omni_range = 6.433
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Extension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.5293)
 light_color = Color(0, 0.65098, 1, 1)
 omni_range = 6.433

@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://b73uhy71pi2d0"]
+
+[ext_resource type="Script" path="res://Test_Scripts/EnvironmentScripts/Chandelier.gd" id="1_pah70"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7115o"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rkxta"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_81yas"]
+top_radius = 0.17
+bottom_radius = 0.17
+height = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3mr3t"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_m34i3"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aflcc"]
+
+[node name="Chandelier" type="Area3D"]
+script = ExtResource("1_pah70")
+
+[node name="Anchor" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_7115o")
+
+[node name="Suspension" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.299734, 0)
+mesh = SubResource("CylinderMesh_rkxta")
+
+[node name="ArmAnchor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.597181, 0)
+mesh = SubResource("CylinderMesh_81yas")
+
+[node name="Arm1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.597701, 0.284087)
+mesh = SubResource("CylinderMesh_3mr3t")
+
+[node name="Arm2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.597701, -0.287001)
+mesh = SubResource("CylinderMesh_3mr3t")
+
+[node name="Arm3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.286276, -0.597701, -0.00207014)
+mesh = SubResource("CylinderMesh_3mr3t")
+
+[node name="Arm4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.287093, -0.597701, -0.00207014)
+mesh = SubResource("CylinderMesh_3mr3t")
+
+[node name="Light1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.709863, 0.458269)
+mesh = SubResource("BoxMesh_m34i3")
+
+[node name="Light2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.709863, -0.460186)
+mesh = SubResource("BoxMesh_m34i3")
+
+[node name="Light3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454799, -0.709863, -0.000715971)
+mesh = SubResource("BoxMesh_m34i3")
+
+[node name="Light4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.458563, -0.709863, -0.000715971)
+mesh = SubResource("BoxMesh_m34i3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.455031, -0.967999, 0)
+light_energy = 1.5
+spot_range = 50.0
+spot_angle = 25.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.456494, -0.967999, 0)
+light_energy = 1.5
+spot_range = 50.0
+spot_angle = 25.0
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00032229, -0.967999, 0.458349)
+light_energy = 1.5
+spot_range = 50.0
+spot_angle = 25.0
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00032229, -0.967999, -0.462989)
+light_energy = 1.5
+spot_range = 50.0
+spot_angle = 25.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363156, -0.460337, 0)
+light_energy = 0.25
+omni_range = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377464, -0.460337, 0)
+light_energy = 0.25
+omni_range = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00395763, -0.460337, -0.370319)
+light_energy = 0.25
+omni_range = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00547671, -0.460337, 0.376074)
+light_energy = 0.25
+omni_range = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503411, 0)
+shape = SubResource("BoxShape3D_aflcc")
+
+[connection signal="body_entered" from="." to="." method="_chandelier_entered"]

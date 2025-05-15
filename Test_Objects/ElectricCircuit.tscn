@@ -4,9 +4,12 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8x1r4"]
 resource_local_to_scene = true
-albedo_color = Color(0, 0.490196, 0.490196, 1)
+transparency = 4
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0, 0.490196, 0.490196, 0.627451)
+metallic_specular = 1.0
 emission = Color(0, 1, 1, 1)
-emission_energy_multiplier = 2.0
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
 
@@ -15,17 +18,15 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_8x1r4")
 size = Vector3(1, 0.1, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cskw6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63j0u"]
 albedo_color = Color(0, 1, 1, 1)
 emission_enabled = true
 emission = Color(0, 1, 1, 1)
-emission_energy_multiplier = 3.0
-backlight_enabled = true
-backlight = Color(1, 1, 1, 1)
+emission_energy_multiplier = 99.0
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_71nia"]
-material = SubResource("StandardMaterial3D_cskw6")
-radius = 0.04
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_js8l1"]
+material = SubResource("StandardMaterial3D_63j0u")
+radius = 0.045
 height = 1.0
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2db2l"]
@@ -41,9 +42,9 @@ script = ExtResource("1_24xse")
 mesh = SubResource("BoxMesh_fth4e")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -9.92715e-05, 0)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 visible = false
-mesh = SubResource("CapsuleMesh_71nia")
+mesh = SubResource("CapsuleMesh_js8l1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_2db2l")

@@ -476,10 +476,10 @@ pixel_size = 0.015
 sprite_frames = SubResource("SpriteFrames_dfn11")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12807, -0.0875087)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12807, -0.0552159)
 visible = false
 light_color = Color(0, 0.861846, 0.108101, 1)
-omni_range = 1.0
+omni_range = 1.5
 
 [node name="FireDoTTimer" type="Timer" parent="."]
 

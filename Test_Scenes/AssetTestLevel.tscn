@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://da572t6aepxpr"]
+[gd_scene load_steps=33 format=3 uid="uid://da572t6aepxpr"]
 
 [ext_resource type="Script" path="res://Test_Scripts/LevelManagers/AssetTestLevel.gd" id="1_3cc6k"]
 [ext_resource type="PackedScene" uid="uid://doit0wmavhdbv" path="res://Test_Objects/PowerCell.tscn" id="1_fv4gf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bay1ray5ux2vw" path="res://Test_Objects/test_throw_enemy.tscn" id="11_xhlsc"]
 [ext_resource type="PackedScene" uid="uid://c3rsb2ybyk10t" path="res://Test_Objects/punch_button.tscn" id="13_5rcdu"]
 [ext_resource type="PackedScene" uid="uid://bwgasniv4bw8e" path="res://Test_Objects/test_boss.tscn" id="15_avvfk"]
+[ext_resource type="PackedScene" uid="uid://dpfcs1irbocnw" path="res://Test_Objects/test_banner.tscn" id="16_3x6js"]
 
 [sub_resource type="Environment" id="Environment_85ukn"]
 glow_enabled = true
@@ -66,6 +67,13 @@ albedo_color = Color(0.344601, 0.164333, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_cu1yd"]
 material = SubResource("StandardMaterial3D_7egt5")
 size = Vector3(0.595, 1.535, 1.49)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i208t"]
+albedo_color = Color(0.677212, 0.336299, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uktca"]
+material = SubResource("StandardMaterial3D_i208t")
+size = Vector3(2, 5, 1)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_3cc6k")
@@ -195,6 +203,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.21, 0, 15.394)
 [node name="TelePoint2" type="Node3D" parent="Map/BossTelePoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.21, 0, 21.1983)
 
+[node name="CircuitArea4" type="StaticBody3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.97959, 0, 0)
+collision_layer = 36
+collision_mask = 15
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map/CircuitArea4"]
+mesh = SubResource("BoxMesh_cihoc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/CircuitArea4"]
+shape = SubResource("ConvexPolygonShape3D_bke6e")
+
+[node name="Label3D" type="Label3D" parent="Map/CircuitArea4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.161133, -1.98944)
+pixel_size = 0.015
+text = "Cloth Test Area"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Map/CircuitArea4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65189, -3.51345)
+mesh = SubResource("BoxMesh_uktca")
+
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="PillarSwitch" parent="Interactables" instance=ExtResource("2_cj6ik")]
@@ -299,3 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2167, 2.38702, 15.3941)
 [node name="Player" parent="." instance=ExtResource("7_m4q1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 3)
 collision_mask = 7
+
+[node name="Node3D" parent="." instance=ExtResource("16_3x6js")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.0002, 3.01006, -2.96148)

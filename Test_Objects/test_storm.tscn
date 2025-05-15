@@ -1,18 +1,27 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6e1d3p46kvwv"]
+[gd_scene load_steps=15 format=3 uid="uid://b6e1d3p46kvwv"]
 
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/test_storm.gd" id="1_iwgm0"]
-[ext_resource type="Texture2D" uid="uid://bcdgep8tythoa" path="res://Test_Assets/AbilitySprites/Storm_Cloud.png" id="2_ujjmh"]
+[ext_resource type="Texture2D" uid="uid://bwikl38dla4di" path="res://Test_Assets/AbilitySprites/Storm_Cloud.png" id="2_ujjmh"]
 [ext_resource type="Script" path="res://Test_Scripts/AbilityScripts/stormarea.gd" id="3_5x31d"]
-[ext_resource type="Texture2D" uid="uid://6dxrg1dls4ud" path="res://Test_Assets/AbilitySprites/Storm_Light_Up.png" id="3_sxeuy"]
+[ext_resource type="Texture2D" uid="uid://co3h75pipjy68" path="res://Test_Assets/AbilitySprites/Storm_Light_Up.png" id="3_sxeuy"]
+[ext_resource type="Shader" path="res://Test_Assets/Shaders/test_storm.gdshader" id="3_yqgbd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf381"]
-albedo_color = Color(0.0705882, 0, 0.486275, 1)
+[sub_resource type="SphereMesh" id="SphereMesh_ksbgq"]
+radius = 10.0
+height = 5.16
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_g8qo2"]
-material = SubResource("StandardMaterial3D_xf381")
-top_radius = 10.0
-bottom_radius = 10.0
-height = 0.2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d8w7"]
+render_priority = 0
+shader = ExtResource("3_yqgbd")
+shader_parameter/height_scale = 0.5
+shader_parameter/wave_speed = 0.2
+shader_parameter/upper_transparency = 1.0
+shader_parameter/global_transparency = 1.0
+shader_parameter/time_factor = Vector2(2, 3)
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/color1 = Color(0.125272, 0.249401, 0.267695, 1)
+shader_parameter/color2 = Color(0.162928, 0.380754, 0.4452, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_amt8x"]
 height = 0.2
@@ -48,12 +57,15 @@ script = ExtResource("1_iwgm0")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.12138, 0)
+visible = false
 pixel_size = 0.022
 render_priority = -1
 texture = ExtResource("2_ujjmh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_g8qo2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.20347, 0)
+mesh = SubResource("SphereMesh_ksbgq")
+surface_material_override/0 = SubResource("ShaderMaterial_2d8w7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_amt8x")
@@ -75,6 +87,14 @@ visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
 
+[node name="OmniLight3D" type="SpotLight3D" parent="check1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.148147, -8.0605, 0.2)
+light_color = Color(0.185447, 0, 0.961266, 1)
+light_energy = 16.0
+spot_range = 20.858
+spot_attenuation = 0.63728
+spot_angle = 50.0
+
 [node name="check2" type="Area3D" parent="."]
 collision_mask = 2
 script = ExtResource("3_5x31d")
@@ -91,6 +111,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.4786
 visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="check2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.620267, 5.51455)
+visible = false
+light_color = Color(0.278431, 0.352941, 0.815686, 1)
+light_energy = 16.0
 
 [node name="check3" type="Area3D" parent="."]
 collision_mask = 2
@@ -109,6 +135,12 @@ visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="check3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5309, -1, 0.2)
+visible = false
+light_color = Color(0.185447, 0, 0.961266, 1)
+light_energy = 16.0
+
 [node name="check4" type="Area3D" parent="."]
 collision_mask = 2
 script = ExtResource("3_5x31d")
@@ -125,6 +157,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.442
 visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="check4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.649088, -0.620267, -6.35484)
+visible = false
+light_color = Color(0.278431, 0.352941, 0.815686, 1)
+light_energy = 16.0
 
 [node name="check5" type="Area3D" parent="."]
 collision_mask = 2
@@ -143,6 +181,12 @@ visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="check5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8, -0.620267, -1.96552)
+visible = false
+light_color = Color(0.278431, 0.352941, 0.815686, 1)
+light_energy = 16.0
+
 [node name="checkCenter" type="Area3D" parent="."]
 collision_mask = 2
 script = ExtResource("3_5x31d")
@@ -159,6 +203,12 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.
 visible = false
 pixel_size = 0.02
 texture = ExtResource("3_sxeuy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="checkCenter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.22454, -1, 6.25603)
+visible = false
+light_color = Color(0.185447, 0, 0.961266, 1)
+light_energy = 16.0
 
 [connection signal="timeout" from="check1/Cooldown" to="check1" method="_on_cooldown_timeout"]
 [connection signal="timeout" from="check2/Cooldown" to="check2" method="_on_cooldown_timeout"]

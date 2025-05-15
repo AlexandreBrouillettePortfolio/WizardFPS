@@ -11,6 +11,14 @@ func _enter_tree() -> void:
 	#print(self.region_rect.size)
 	strike(target)
 
+func _ready() -> void:
+	print(distanceToTravel)
+	if (distanceToTravel < 15):
+		#(($GPUParticles3D as GPUParticles3D).material_overlay as ShaderMaterial).set_shader_parameter("DistanceToTarget", distanceToTravel)
+		((($GPUParticles3D as GPUParticles3D).draw_pass_1 as ArrayMesh).surface_get_material(0) as ShaderMaterial).set_shader_parameter("DistanceToTarget", distanceToTravel)
+	if (distanceToTravel > 15):
+		($Extension as Node3D).visible = true
+
 func _physics_process(delta: float) -> void:
 	ttl -= delta
 	if (ttl <= 0):
