@@ -76,7 +76,7 @@ func _on_arms_frame_changed() -> void:
 		projectile.position = Vector3(self.position.x - 3*sin(get_rotation().y), self.position.y, 
 										self.position.z - 3*cos(get_rotation().y))
 		projectile.rotation.y = get_rotation().y
-		projectile.rotation.x = get_rotation().x - 1.5900
+		projectile.rotation.x = get_rotation().x - 1.5708
 		get_tree().current_scene.add_child(projectile)
 		($ShootEffect as AnimatedSprite3D).visible = false
 		($Sprite/Arms as AnimatedSprite3D).position.y = -0.036
